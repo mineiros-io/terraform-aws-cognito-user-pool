@@ -6,9 +6,9 @@
 # OUTPUT ALL RESOURCES AS FULL OBJECTS
 # ------------------------------------------------------------------------------
 
-output "user_pool" {
-  description = "The full `aws_cognito_user_pool` object."
-  value       = try(aws_cognito_user_pool.user_pool[0], null)
+output "cognito_user_pool" {
+  description = "All outputs of the cognito user pool module."
+  value       = module.cognito_user_pool
 }
 
 # ------------------------------------------------------------------------------
@@ -18,8 +18,3 @@ output "user_pool" {
 # ------------------------------------------------------------------------------
 # OUTPUT MODULE CONFIGURATION
 # ------------------------------------------------------------------------------
-
-output "module_enabled" {
-  description = "Whether the module is enabled"
-  value       = var.module_enabled
-}

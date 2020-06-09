@@ -1,28 +1,5 @@
 # ------------------------------------------------------------------------------
-# Example full usage of the terraform-module-template module
-# ------------------------------------------------------------------------------
-
-module "terraform-module-template" {
-  source = "git@github.com:mineiros-io/terraform-module-template.git?ref=v0.0.1"
-
-  # All required module arguments
-
-  # none
-
-  # All optional module arguments set to the default values
-
-  # none
-
-  # All optional module configuration arguments set to the default values.
-  # Those are maintained for terraform 0.12 but can still be used in terraform 0.13
-  # Starting with terraform 0.13 you can additionally make use of module level
-  # count, for_each and depends_on features.
-  module_enabled    = true
-  module_depends_on = []
-}
-
-# ------------------------------------------------------------------------------
-# Example AWS provider setup
+# Example Setup
 # ------------------------------------------------------------------------------
 
 provider "aws" {
@@ -30,17 +7,47 @@ provider "aws" {
 }
 
 # ------------------------------------------------------------------------------
-# ENVIRONMENT VARIABLES:
+# Example Usage
 # ------------------------------------------------------------------------------
-# You can provide your credentials via the
-#   AWS_ACCESS_KEY_ID and
-#   AWS_SECRET_ACCESS_KEY, environment variables,
-# representing your AWS Access Key and AWS Secret Key, respectively.
-# Note that setting your AWS credentials using either these (or legacy)
-# environment variables will override the use of
-#   AWS_SHARED_CREDENTIALS_FILE and
-#   AWS_PROFILE.
-# The
-#   AWS_DEFAULT_REGION and
-#   AWS_SESSION_TOKEN environment variables are also used, if applicable.
-# ------------------------------------------------------------------------------
+
+module "cognito_user_pool" {
+  source = "../../"
+  name   = "test-userpool"
+
+  //  sms_configuration = {
+  //    external_id    = "1234"
+  //    sns_caller_arn = "arn:aws:sns:eu-west-1:999999999999:dev-sns-topic"
+  //  }
+
+  lambda_create_auth_challenge = "arn:aws:lambda:eu-west-1:815481169901:function:sns-to-slack"
+
+  schema_attributes = [
+    {
+      name                     = "alternative_name"
+      type                     = "String"
+      developer_only_attribute = false,
+      mutable                  = true,
+      required                 = false,
+      min_length               = 0,
+      max_length               = 2048
+    },
+    {
+      name      = "friends_count"
+      type      = "Number"
+      min_value = 0,
+      max_value = 100
+
+    },
+    {
+
+      name = "is_active"
+      type = "Boolean"
+
+    },
+    {
+      name = "last_seen"
+      type = "DateTime"
+
+    }
+  ]
+}
