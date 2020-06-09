@@ -8,12 +8,9 @@ agent:
 global_job_config:
   secrets:
     - name: TERRAFORM_AWS_TESTACCOUNT_CREDENTIALS
-  #   - name: private-ssh-key-with-iac-library-access
   prologue:
     commands:
       - checkout --use-cache
-      # - chmod 400 ~/.ssh/id_rsa_iac_library
-      # - ssh-add ~/.ssh/id_rsa_iac_library
 
 blocks:
   - name: "Tests"

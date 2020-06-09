@@ -29,7 +29,7 @@ variable "advanced_security_mode" {
 
 variable "alias_attributes" {
   type        = set(string)
-  description = "(Optional) Attributes supported as an alias for this user pool. Possible values: 'phone_number', 'email', or 'preferred_username'. Conflicts with username_attributes."
+  description = "(Optional) Attributes supported as an alias for this user pool. Possible values: 'phone_number', 'email', or 'preferred_username'."
   default = [
     "email",
     "preferred_username",
@@ -88,7 +88,7 @@ variable "enable_username_case_sensitivity" {
 
 variable "email_sending_account" {
   type        = string
-  description = "(Optional) Instruct Cognito to either use its built-in functional or Amazon SES to send out emails."
+  description = "(Optional) The email delivery method to use. 'COGNITO_DEFAULT' for the default email functionality built into Cognito or 'DEVELOPER' to use your Amazon SES configuration."
   default     = "COGNITO_DEFAULT"
 }
 
@@ -116,31 +116,31 @@ variable "mfa_configuration" {
   default     = "OPTIONAL"
 }
 
-variable "minimum_length" {
+variable "password_minimum_length" {
   type        = number
   description = "(Optional) The minimum length of the password policy that you have set."
   default     = 20
 }
 
-variable "require_lowercase" {
+variable "password_require_lowercase" {
   type        = bool
   description = "(Optional) Whether you have required users to use at least one lowercase letter in their password."
   default     = true
 }
 
-variable "require_numbers" {
+variable "password_require_numbers" {
   type        = bool
   description = "(Optional) Whether you have required users to use at least one number in their password."
   default     = true
 }
 
-variable "require_symbols" {
+variable "password_require_symbols" {
   type        = bool
   description = "(Optional) Whether you have required users to use at least one symbol in their password."
   default     = true
 }
 
-variable "require_uppercase" {
+variable "password_require_uppercase" {
   type        = bool
   description = "(Optional) Whether you have required users to use at least one uppercase letter in their password."
   default     = true
@@ -166,61 +166,61 @@ variable "sms_authentication_message" {
 
 variable "lambda_create_auth_challenge" {
   type        = string
-  description = "(Optional) - The ARN of the lambda creating an authentication challenge."
+  description = "(Optional) The ARN of an AWS Lambda creating an authentication challenge."
   default     = null
 }
 
 variable "lambda_custom_message" {
   type        = string
-  description = "(Optional) - A custom Message AWS Lambda trigger."
+  description = "(Optional) The ARN of a custom message AWS Lambda trigger."
   default     = null
 }
 
 variable "lambda_define_auth_challenge" {
   type        = string
-  description = "(Optional) - Defines the authentication challenge."
+  description = "(Optional) The ARN of an AWS Lambda that defines the authentication challenge."
   default     = null
 }
 
 variable "lambda_post_authentication" {
   type        = string
-  description = "(Optional) - A post-authentication AWS Lambda trigger."
+  description = "(Optional) The ARN of a post-authentication AWS Lambda trigger."
   default     = null
 }
 
 variable "lambda_post_confirmation" {
   type        = string
-  description = "(Optional) - A post-confirmation AWS Lambda trigger."
+  description = "(Optional) The ARN of a post-confirmation AWS Lambda trigger."
   default     = null
 }
 
 variable "lambda_pre_authentication" {
   type        = string
-  description = "(Optional) - A pre-authentication AWS Lambda trigger."
+  description = "(Optional) The ARN of a pre-authentication AWS Lambda trigger."
   default     = null
 }
 
 variable "lambda_pre_sign_up" {
   type        = string
-  description = "(Optional) - A pre-registration AWS Lambda trigger."
+  description = "(Optional) The ARN of a pre-registration AWS Lambda trigger."
   default     = null
 }
 
 variable "lambda_pre_token_generation" {
   type        = string
-  description = "(Optional) - Allow to customize identity token claims before token generation."
+  description = "(Optional) The ARN of an AWS Lambda that allows customization of identity token claims before token generation."
   default     = null
 }
 
 variable "lambda_user_migration" {
   type        = string
-  description = "(Optional) - The user migration Lambda config type."
+  description = "(Optional) The ARN of the user migration AWS Lambda config type."
   default     = null
 }
 
 variable "lambda_verify_auth_challenge_response" {
   type        = string
-  description = "(Optional) - Verifies the authentication challenge response."
+  description = "(Optional) The ARN of an AWS Lambda that verifies the authentication challenge response."
   default     = null
 }
 

@@ -10,7 +10,4 @@ repos:
       - id: goimports
       - id: golint
       - id: phony-targets
-      # golangci-lint can be used as a replacement for golint
-      # - id: golangci-lint
-      # markdown-link-check should only be used for public repositories TODO: implement ignore pattern for private repos
       # - id: markdown-link-check

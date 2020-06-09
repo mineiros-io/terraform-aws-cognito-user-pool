@@ -6,7 +6,7 @@
 # OUTPUT ALL RESOURCES AS FULL OBJECTS
 # ------------------------------------------------------------------------------
 
-output "cognito_user_pool" {
+output "user_pool" {
   description = "All outputs of the cognito user pool module."
   value       = module.cognito_user_pool
 }
