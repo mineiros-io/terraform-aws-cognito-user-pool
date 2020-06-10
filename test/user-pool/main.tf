@@ -13,11 +13,12 @@ provider "aws" {
 }
 
 # ------------------------------------------------------------------------------
-# CREATE THE USER POOL
+# CREATE THE COGNITO USER POOL
 # ------------------------------------------------------------------------------
 
 module "cognito_user_pool" {
   source = "../../"
+  name   = var.name
 
-  name = "main-identity-pool"
+  schema_attributes = var.schema_attributes
 }

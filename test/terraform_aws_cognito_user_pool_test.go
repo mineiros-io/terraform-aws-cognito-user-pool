@@ -1,9 +1,12 @@
 package test
 
 import (
+	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/aws"
+	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
@@ -26,13 +29,15 @@ func TestCognitoUserPool(t *testing.T) {
 		"eu-west-2",
 	}
 
-	awsRegion := aws.GetRandomRegion(t, availableRegions, nil)
+	randomAwsRegion := aws.GetRandomRegion(t, availableRegions, nil)
+	userPoolName := strings.ToLower(fmt.Sprintf("cognito-user-pool-%s", random.UniqueId()))
 
 	terraformOptions := &terraform.Options{
 		// The path to where your Terraform code is located
 		TerraformDir: "./user-pool",
 		Vars: map[string]interface{}{
-			"aws_region": awsRegion,
+			"aws_region": randomAwsRegion,
+			"name":       userPoolName,
 		},
 		Upgrade: true,
 	}
