@@ -70,9 +70,11 @@ module "cognito_user_pool" {
 
   schema_attributes = [
     {
-      name     = "gender", # overwrites the default attribute 'gender'
-      type     = "String"
-      required = true
+      name       = "gender", # overwrites the default attribute 'gender'
+      type       = "String"
+      required   = true
+      min_length = 1
+      max_length = 2048
     },
     {
       name                     = "alternative_name"
@@ -97,6 +99,18 @@ module "cognito_user_pool" {
     {
       name = "last_seen"
       type = "DateTime"
+    }
+  ]
+
+  clients = [
+    {
+      name                 = "android-mobile-client"
+      read_attributes      = ["email", "email_verified", "preferred_username"]
+      allowed_oauth_scopes = ["email", "openid"]
+      allowed_oauth_flows  = ["implicit"]
+      callback_urls        = ["https://mineiros.io/callback", "https://mineiros.io/anothercallback"]
+      default_redirect_uri = "https://mineiros.io/callback"
+      generate_secret      = true
     }
   ]
 

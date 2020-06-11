@@ -25,12 +25,29 @@ variable "aws_region" {
 
 variable "name" {
   type        = string
-  description = "The name of the user pool."
+  description = "The name of the Cognito User Pool."
   default     = "test-pool"
 }
+
+variable "clients" {
+  description = "(Optional) A list of objects with the clients definitions."
+  type        = any
+  default = [
+    {
+      name                 = "android-mobile-client"
+      read_attributes      = ["email", "email_verified", "preferred_username"]
+      allowed_oauth_scopes = ["email", "openid"]
+      allowed_oauth_flows  = ["implicit"]
+      callback_urls        = ["https://mineiros.io/callback", "https://mineiros.io/anothercallback"]
+      default_redirect_uri = "https://mineiros.io/callback"
+      generate_secret      = true
+    }
+  ]
+}
+
 variable "schema_attributes" {
   type        = any
-  description = "A list of schema attributes of a user pool. You can add a maximum um 25 custom attributes."
+  description = "A list of schema attributes of a Cognito User Pool. You can add a maximum um 25 custom attributes."
   default = [
     {
       # overwrite the default attribute 'gender'
