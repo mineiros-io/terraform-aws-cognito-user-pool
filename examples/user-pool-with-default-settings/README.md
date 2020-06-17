@@ -10,8 +10,8 @@
 The code in [main.tf](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/master/examples/user-pool-with-default-settings/main.tf)
 shows how to deploy a Cognito User Pool with default settings that are
 defined in the
-[https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/master/examples/user-pool-with-default-settings/variables.tf](variables.tf)
-file of this module.
+[variables.tf](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/master/examples/user-pool-with-default-settings/variables.tf)
+file of this module. 
 
 ## How to run the example
 

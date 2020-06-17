@@ -163,3 +163,44 @@ resource "aws_cognito_user_pool" "user_pool" {
   tags       = var.tags
   depends_on = [var.module_depends_on]
 }
+
+locals {
+  clients = {
+    for client in var.clients : replace(lower(client.name), "/[^a-z0-9]/", "-") => {
+      allowed_oauth_flows                  = lookup(client, "allowed_oauth_flows", var.default_client_allowed_oauth_flows)
+      allowed_oauth_flows_user_pool_client = lookup(client, "allowed_oauth_flows_user_pool_client", var.default_client_allowed_oauth_flows_user_pool_client)
+      allowed_oauth_scopes                 = lookup(client, "allowed_oauth_scopes", var.default_client_allowed_oauth_scopes)
+      callback_urls                        = lookup(client, "callback_urls", var.default_client_callback_urls)
+      default_redirect_uri                 = lookup(client, "default_redirect_uri", var.default_client_default_redirect_uri)
+      explicit_auth_flows                  = lookup(client, "explicit_auth_flows", var.default_client_explicit_auth_flows)
+      generate_secret                      = lookup(client, "generate_secret", var.default_client_generate_secret)
+      logout_urls                          = lookup(client, "logout_urls", var.default_client_logout_urls)
+      read_attributes                      = lookup(client, "read_attributes", var.default_client_read_attributes)
+      refresh_token_validity               = lookup(client, "refresh_token_validity", var.default_client_refresh_token_validity)
+      supported_identity_providers         = lookup(client, "supported_identity_providers", var.default_client_supported_identity_providers)
+      prevent_user_existence_errors        = lookup(client, "prevent_user_existence_errors", var.default_client_prevent_user_existence_errors)
+      write_attributes                     = lookup(client, "write_attributes", var.default_client_write_attributes)
+    }
+  }
+}
+
+resource "aws_cognito_user_pool_client" "client" {
+  for_each = var.module_enabled ? local.clients : {}
+
+  name = each.key
+
+  allowed_oauth_flows                  = each.value.allowed_oauth_flows
+  allowed_oauth_flows_user_pool_client = each.value.allowed_oauth_flows_user_pool_client
+  allowed_oauth_scopes                 = each.value.allowed_oauth_scopes
+  callback_urls                        = each.value.callback_urls
+  default_redirect_uri                 = each.value.default_redirect_uri
+  explicit_auth_flows                  = each.value.explicit_auth_flows
+  generate_secret                      = each.value.generate_secret
+  logout_urls                          = each.value.logout_urls
+  read_attributes                      = each.value.read_attributes
+  refresh_token_validity               = each.value.refresh_token_validity
+  supported_identity_providers         = each.value.supported_identity_providers
+  prevent_user_existence_errors        = each.value.prevent_user_existence_errors
+  user_pool_id                         = aws_cognito_user_pool.user_pool[0].id
+  write_attributes                     = each.value.write_attributes
+}

@@ -7,8 +7,14 @@
 # ------------------------------------------------------------------------------
 
 output "user_pool" {
-  description = "All outputs of the cognito user pool module."
-  value       = module.cognito_user_pool
+  description = "All outputs exposed by the module."
+  value       = merge(module.cognito_user_pool, { client_secrets = null })
+}
+
+output "client_secrets" {
+  description = "The secrets of all created Cognito User Pool Client resources."
+  value       = module.cognito_user_pool.client_secrets
+  sensitive   = true
 }
 
 # ------------------------------------------------------------------------------

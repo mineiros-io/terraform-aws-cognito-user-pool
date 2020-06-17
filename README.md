@@ -18,6 +18,8 @@ on [Amazon Web Services (AWS)](https://aws.amazon.com/).
   - [Module Configuration](#module-configuration)
   - [Top-level Arguments](#top-level-arguments)
     - [Cognito User Pool](#cognito-user-pool)
+    - [Cognito User Pool Clients](#cognito-user-pool-clients)
+    - [Cognito User Pool Clients Default Values](#cognito-user-pool-clients-default-values)
 - [External Documentation](#external-documentation)
 - [Module Versioning](#module-versioning)
   - [Backwards compatibility in `0.0.z` and `0.y.z` version](#backwards-compatibility-in-00z-and-0yz-version)
@@ -42,9 +44,9 @@ pre-configured.
 
 **Standard Cognito Features**:
   Create a Cognito User Pool with pre-configured best practices.
+  Create Cognito User Pool Clients.
 
 - *Features not yet implemented*:
-  [`cognito_user_pool_client`](https://www.terraform.io/docs/providers/aws/r/cognito_user_pool_client.html)
   [`cognito_user_pool_domain`](https://www.terraform.io/docs/providers/aws/r/cognito_user_pool_domain.html)
   [`cognito_user_group`](https://www.terraform.io/docs/providers/aws/r/cognito_user_group.html)
   [`cognito_resource_server`](https://www.terraform.io/docs/providers/aws/r/cognito_resource_server.html)
@@ -76,10 +78,12 @@ for details and use-cases.
 ### Module Configuration
 
 - **`module_enabled`**: *(Optional `bool`)*
+
 Specifies whether resources in the module will be created.
 Default is `true`.
 
 - **`module_depends_on`**: *(Optional `list(any)`)*
+
 A list of dependencies. Any object can be assigned to this list to define a hidden
 external dependency.
 
@@ -338,26 +342,140 @@ external dependency.
 
   **Example:**
 
-   ```hcl
-     tags = {
-       CreatedAt = "2020-02-07",
-         Alice   = "Bob"
-     }
-   ```
+  ```hcl
+  tags  = {
+    CreatedAt = "2020-02-07",
+    Alice     = "Bob"
+  }
+  ```
+
+#### Cognito User Pool Clients
+
+- **`clients`**: *(Optional `list(client)`)*
+
+  A list of objects with the clients definitions.
+  Default is `[]`.
+
+  **Example:**
+
+  A list of clients that follow the normal schema defined by the provider.
+  For details please see https://www.terraform.io/docs/providers/aws/r/cognito_user_pool_client.html
+
+  ```hcl
+  clients = [
+    {
+      name                 = "android-mobile-client"
+      read_attributes      = ["email", "email_verified", "preferred_username"]
+      allowed_oauth_scopes = ["email", "openid"]
+      allowed_oauth_flows  = ["implicit"]
+      callback_urls        = ["https://mineiros.io/callback", "https://mineiros.io/anothercallback"]
+      default_redirect_uri = "https://mineiros.io/callback"
+      generate_secret      = true
+    }
+  ]
+  ```
+
+#### Cognito User Pool Clients Default Values
+  
+  The following variables can be used for setting default settings among various clients defined through the `clients`
+  variable. This helps you to quickly issue several clients that implement the same settings, e.g. like so:
+  
+  ```hcl
+  clients = [
+    { name = "ios" },
+    { name = "android" },
+    { name = "web" },
+  ]
+
+  default_client_read_attributes        = ["email", "email_verified", "preferred_username"]
+  default_client_allowed_oauth_scopes   = ["email", "openid"]
+  default_client_allowed_oauth_flows    = ["implicit"]
+  default_client_callback_urls          = ["https://mineiros.io/callback", "https://mineiros.io/anothercallback"]
+  default_client_default_redirect_uri   = "https://mineiros.io/callback"
+  default_client_generate_secret        = true
+  default_client_refresh_token_validity = 45
+
+  default_client_supported_identity_providers         = null
+  default_client_logout_urls                          = null
+  default_client_allowed_oauth_flows_user_pool_client = null
+  default_client_write_attributes                     = null
+  default_client_explicit_auth_flows                  = null
+  default_client_prevent_user_existence_errors        = null
+  ```
+
+- **`default_client_callback_urls`**: *(Optional `list(string)`)*
+
+  List of allowed callback URLs for the identity providers.
+
+- **`default_client_default_redirect_uri`**: *(Optional `string`)*
+
+  The default redirect URI. Must be in the list of callback URLs.
+
+- **`default_client_read_attributes`**: *(Optional `list(string)`)*
+
+  List of Cognito User Pool attributes the application client can read from.
+
+- **`default_client_refresh_token_validity`**: *(Optional `number`)*
+
+  The time limit in days refresh tokens are valid for.
+
+- **`default_client_supported_identity_providers`**: *(Optional `list(string)`)*
+
+  List of provider names for the identity providers that are supported on this client.
+
+- **`default_client_allowed_oauth_scopes`**: *(Optional `list(string)`)*
+
+  List of allowed OAuth scopes. Possible values are `phone`, `email`, `openid`, `profile`, and `aws.cognito.signin.user.admin`.
+
+- **`default_client_logout_urls`**: *(Optional `list(string)`)*
+
+  List of allowed logout URLs for the identity providers.
+
+- **`default_client_allowed_oauth_flows_user_pool_client`**: *(Optional `bool`)*
+
+  Whether the client is allowed to follow the OAuth protocol when interacting with Cognito User Pools.
+
+- **`default_client_generate_secret`**: *(Optional `bool`)*
+
+  Boolean flag for generating an application secret.
+
+- **`default_client_allowed_oauth_flows`**: *(Optional `list(string)`)*
+
+  List of allowed OAuth flows. Possible flows are `code`, `implicit`, and `client_credentials`.
+
+- **`default_client_write_attributes`**: *(Optional `list(string)`)*
+
+  List of Cognito User Pool attributes the application client can write to.
+
+- **`default_client_explicit_auth_flows`**: *(Optional `list(string)`)*
+
+  List of authentication flows. Possible values are `ADMIN_NO_SRP_AUTH`, `CUSTOM_AUTH_FLOW_ONLY`, `USER_PASSWORD_AUTH`, `ALLOW_ADMIN_USER_PASSWORD_AUTH`, `ALLOW_CUSTOM_AUTH`, `ALLOW_USER_PASSWORD_AUTH`, `ALLOW_USER_SRP_AUTH`, and `ALLOW_REFRESH_TOKEN_AUTH`.
+
+- **`default_client_prevent_user_existence_errors`**: *(Optional `string`)*
+
+  Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the Cognito User Pool. When set to `ENABLED` and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to `LEGACY`, those APIs will return a `UserNotFoundException` exception if the user does not exist in the Cognito User Pool.
 
 - ## Module Attributes Reference
 
 The following attributes are exported by the module:
 
 - **`user_pool`**: The `cognito_user_pool` object.
-- **`module_enabled`**: Whether this module is enabled.
+
+- **`clients`**:
+  All `cognito_user_pool_client` objects.
+
+- **`client_secrets`**:
+  The secrets for all created `cognito_user_pool_client` resources.
+
 
 ## External Documentation
 
 - AWS Documentation:
   - https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html
+  - https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-client-apps.html
 - Terraform AWS Provider Documentation:
   - https://www.terraform.io/docs/providers/aws/r/cognito_user_pool.html
+  - https://www.terraform.io/docs/providers/aws/r/cognito_user_pool_client.html
 
 ## Module Versioning
 
