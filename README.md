@@ -1,6 +1,6 @@
 [<img src="https://raw.githubusercontent.com/mineiros-io/brand/e9fff6ecb9617dcb405079f301e23fd83b79c5f3/mineiros-primary-logo.svg" width="400"/>](https://www.mineiros.io/?ref=terraform-aws-cognito-user-pool)
 
-[![Build Status](https://mineiros.semaphoreci.com/badges/terraform-aws-cognito-user-pool/branches/master.svg?style=shields&key=45df31b5-397b-427e-9b96-b995b0daf7c2)](https://mineiros.semaphoreci.com/projects/terraform-aws-cognito-user-pool)
+[![Build Status](https://mineiros.semaphoreci.com/badges/terraform-aws-cognito-user-pool/branches/master.svg?style=shields)](https://mineiros.semaphoreci.com/projects/terraform-aws-cognito-user-pool)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-cognito-user-pool.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/releases)
 [![license](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Terraform Version](https://img.shields.io/badge/terraform-~%3E%200.12.20-623CE4.svg)](https://github.com/hashicorp/terraform/releases)
