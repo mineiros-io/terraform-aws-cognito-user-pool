@@ -1,35 +1,62 @@
-[<img src="https://raw.githubusercontent.com/mineiros-io/brand/e9fff6ecb9617dcb405079f301e23fd83b79c5f3/mineiros-primary-logo.svg" width="400"/>](https://www.mineiros.io/?ref=terraform-aws-cognito-user-pool)
+[<img src="https://raw.githubusercontent.com/mineiros-io/brand/3bffd30e8bdbbde32c143e2650b2faa55f1df3ea/mineiros-primary-logo.svg" width="400"/>][homepage]
 
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-cognito-user-pool.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/releases)
-[![license](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Terraform Version](https://img.shields.io/badge/terraform-~%3E%200.12.20-623CE4.svg)](https://github.com/hashicorp/terraform/releases)
-[<img src="https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack">](https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg)
+[![license][badge-license]][apache20]
+[![Terraform Version][badge-terraform]][releases-terraform]
+[![Join Slack][badge-slack]][slack]
 
 # What this example shows
 
-The code in [main.tf](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/master/examples/user-pool-with-default-settings/main.tf)
+The code in [main.tf]
 shows how to deploy a Cognito User Pool with default settings that are
-defined in the
-[variables.tf](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/master/examples/user-pool-with-default-settings/variables.tf)
-file of this module. 
+defined in the [variables.tf] file of this module.
 
-## How to run the example
+```hcl
+module "cognito_user_pool" {
+  source = "git@github.com:mineiros-io/terraform-cognito-user-pool.git?ref=v0.0.1"
 
-### Clone the repository
-
-```bash
-git clone https://github.com/mineiros-io/terraform-module-template.git
-cd terraform-module-template/examples/user-pool-with-default-settings
+  name = "example-userpool"
+}
 ```
 
-### Initialize Terraform
+## Running the example
 
-Run `terraform init` to initialize the example. The output should look like:
+### Cloning the repository
 
-### Apply the example
+```bash
+git clone https://github.com/mineiros-io/terraform-aws-cognito-user-pool.git
+cd terraform-aws-cognito-user-pool/examples/user-pool-with-default-settings
+```
+
+### Initializing Terraform
+
+Run `terraform init` to initialize the example and download providers and the module.
+
+### Planning the example
+
+Run `terraform plan` to see a plan of the changes.
+
+### Applying the example
 
 Run `terraform apply` to create the resources.
+You will see a plan of the changes and Terraform will prompt you for approval to actually apply the changes.
 
-### Destroy the example
+### Destroying the example
 
-Run `terraform destroy -refresh=false -auto-approve` to destroy all resources again.
+Run `terraform destroy` to destroy all resources again.
+
+<!-- References -->
+
+<!-- markdown-link-check-disable -->
+[main.tf]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/master/examples/user-pool-with-default-settings/main.tf
+[variables.tf]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/master/variables.tf
+<!-- markdown-link-check-enable -->
+
+[homepage]: https://mineiros.io/?ref=terraform-module-template
+
+[badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
+[badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.20+-623CE4.svg?logo=terraform
+[badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
+
+[releases-terraform]: https://github.com/hashicorp/terraform/releases
+[apache20]: https://opensource.org/licenses/Apache-2.0
+[slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
