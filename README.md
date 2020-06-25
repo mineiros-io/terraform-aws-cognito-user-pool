@@ -1,25 +1,26 @@
-[<img src="https://raw.githubusercontent.com/mineiros-io/brand/e9fff6ecb9617dcb405079f301e23fd83b79c5f3/mineiros-primary-logo.svg" width="400"/>](https://www.mineiros.io/?ref=terraform-aws-cognito-user-pool)
+[<img src="https://raw.githubusercontent.com/mineiros-io/brand/3bffd30e8bdbbde32c143e2650b2faa55f1df3ea/mineiros-primary-logo.svg" width="400"/>][homepage]
 
-[![Build Status](https://mineiros.semaphoreci.com/badges/terraform-aws-cognito-user-pool/branches/master.svg?style=shields)](https://mineiros.semaphoreci.com/projects/terraform-aws-cognito-user-pool)
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-cognito-user-pool.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/releases)
-[![license](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Terraform Version](https://img.shields.io/badge/terraform-~%3E%200.12.20-623CE4.svg)](https://github.com/hashicorp/terraform/releases)
-[<img src="https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack">](https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg)
+[![Build Status][badge-build]][build-status]
+[![GitHub tag (latest SemVer)][badge-semver]][releases-github]
+[![license][badge-license]][apache20]
+[![Terraform Version][badge-terraform]][releases-terraform]
+[![Join Slack][badge-slack]][slack]
 
 # terraform-aws-cognito-user-pool
 
-A [Terraform](https://www.terraform.io) 0.12 module for deploying and managing
-[Cognito User Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html)
-on [Amazon Web Services (AWS)](https://aws.amazon.com/).
+A [Terraform] 0.12 module for deploying and managing
+[Cognito User Pools]
+on [Amazon Web Services (AWS)][AWS].
 
 - [Module Features](#module-features)
 - [Getting Started](#getting-started)
 - [Module Argument Reference](#module-argument-reference)
-  - [Module Configuration](#module-configuration)
   - [Top-level Arguments](#top-level-arguments)
+    - [Module Configuration](#module-configuration)
     - [Cognito User Pool](#cognito-user-pool)
     - [Cognito User Pool Clients](#cognito-user-pool-clients)
     - [Cognito User Pool Clients Default Values](#cognito-user-pool-clients-default-values)
+- [Module Attributes Reference](#module-attributes-reference)
 - [External Documentation](#external-documentation)
 - [Module Versioning](#module-versioning)
   - [Backwards compatibility in `0.0.z` and `0.y.z` version](#backwards-compatibility-in-00z-and-0yz-version)
@@ -75,19 +76,19 @@ and
 [examples/](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/examples)
 for details and use-cases.
 
-### Module Configuration
+### Top-level Arguments
+
+#### Module Configuration
 
 - **`module_enabled`**: *(Optional `bool`)*
 
-Specifies whether resources in the module will be created.
-Default is `true`.
+  Specifies whether resources in the module will be created.
+  Default is `true`.
 
 - **`module_depends_on`**: *(Optional `list(any)`)*
 
-A list of dependencies. Any object can be assigned to this list to define a hidden
-external dependency.
-
-### Top-level Arguments
+  A list of dependencies. Any object can be _assigned_ to this list to define a
+  hidden external dependency. Default is `[]`.
 
 #### Cognito User Pool
 
@@ -117,17 +118,17 @@ external dependency.
 
 - **`invite_email_message`**: *(Optional `string`)*
 
-  The message template for email messages. Must contain {username} and {####} placeholders, for username and temporary password, respectively.
+  The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
   Default is `"Your username is {username} and your temporary password is '{####}'"`.
 
 - **`invite_sms_message`**: *(Optional `string`)*
 
-  The message template for SMS messages. Must contain {username} and {####} placeholders, for username and temporary password, respectively.
+  The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
   Default is `"Your username is {username} and your temporary password is '{####}'."`.
 
 - **`auto_verified_attributes`**: *(Optional `set(string)`)*
 
-  The attributes to be auto-verified. Possible values: 'email', 'phone_number'.
+  The attributes to be auto-verified. Possible values: `email`, `phone_number`.
   Default is `["email"]`.
 
 - **`challenge_required_on_new_device`**: *(Optional `bool`)*
@@ -141,7 +142,7 @@ external dependency.
 
 - **`enable_username_case_sensitivity`**: *(Optional `bool`)*
 
-  Specifies whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
+  Specifies whether username case sensitivity will be applied to all users in the user pool through Cognito APIs.
   Default is `false`.
 
 - **`email_sending_account`**: *(Optional `string`)*
@@ -265,7 +266,7 @@ external dependency.
   attributes. Please note that only default attributes can be marked as required.
   Also an attribute cannot be switched between required and not required after a
   user pool has been created.
-  For details please see the docs: https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html
+  For details please see the [attributes docs].
   Default is `[]`.
 
   **Example:**
@@ -359,7 +360,7 @@ external dependency.
   **Example:**
 
   A list of clients that follow the normal schema defined by the provider.
-  For details please see https://www.terraform.io/docs/providers/aws/r/cognito_user_pool_client.html
+  For details please see [Terraform AWS Cognito User Pool Client Docs].
 
   ```hcl
   clients = [
@@ -376,10 +377,10 @@ external dependency.
   ```
 
 #### Cognito User Pool Clients Default Values
-  
+
   The following variables can be used for setting default settings among various clients defined through the `clients`
   variable. This helps you to quickly issue several clients that implement the same settings, e.g. like so:
-  
+
   ```hcl
   clients = [
     { name = "ios" },
@@ -455,18 +456,13 @@ external dependency.
 
   Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the Cognito User Pool. When set to `ENABLED` and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to `LEGACY`, those APIs will return a `UserNotFoundException` exception if the user does not exist in the Cognito User Pool.
 
-- ## Module Attributes Reference
+## Module Attributes Reference
 
 The following attributes are exported by the module:
 
 - **`user_pool`**: The `cognito_user_pool` object.
-
-- **`clients`**:
-  All `cognito_user_pool_client` objects.
-
-- **`client_secrets`**:
-  The secrets for all created `cognito_user_pool_client` resources.
-
+- **`clients`**: A list of `cognito_user_pool_client` objects.
+- **`client_secrets`**: The secrets for all created `cognito_user_pool_client` resources.
 
 ## External Documentation
 
@@ -479,53 +475,85 @@ The following attributes are exported by the module:
 
 ## Module Versioning
 
-This Module follows the principles of [Semantic Versioning (SemVer)](https://semver.org/).
+This Module follows the principles of [Semantic Versioning (SemVer)].
 
-Using the given version number of `MAJOR.MINOR.PATCH`, we apply the following constructs:
+Given a version number `MAJOR.MINOR.PATCH`, we increment the:
 
-1. Use the `MAJOR` version for incompatible changes.
-1. Use the `MINOR` version when adding functionality in a backwards compatible manner.
-1. Use the `PATCH` version when introducing backwards compatible bug fixes.
+1. `MAJOR` version when we make incompatible changes,
+2. `MINOR` version when we add functionality in a backwards compatible manner, and
+3. `PATCH` version when we make backwards compatible bug fixes.
 
 ### Backwards compatibility in `0.0.z` and `0.y.z` version
 
-- In the context of initial development, backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is
-  increased. (Initial development)
-- In the context of pre-release, backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is
-increased. (Pre-release)
+- Backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is increased. (Initial development)
+- Backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is increased. (Pre-release)
 
 ## About Mineiros
 
-Mineiros is a [DevOps as a Service](https://www.mineiros.io/?ref=terraform-aws-cognito-user-pool)
-company based in Berlin, Germany. We offer commercial support
-for all of our projects and encourage you to reach out if you have any questions or need help.
-Feel free to send us an email at [hello@mineiros.io](mailto:hello@mineiros.io) or join our
-[Community Slack channel](https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg).
+Mineiros is a [DevOps as a Service][homepage] company based in Berlin, Germany.
+We offer commercial support for all of our projects and encourage you to reach out
+if you have any questions or need help. Feel free to send us an email at [hello@mineiros.io] or join our [Community Slack channel][slack].
 
-- Terraform Modules for all types of infrastructure such as VPC's, Docker clusters,
-databases, logging and monitoring, CI, etc.
-- Consulting & Training on AWS, Terraform and DevOps.
+We can also help you with:
+
+- Terraform modules for all types of infrastructure such as VPCs, Docker clusters, databases, logging and monitoring, CI, etc.
+- Consulting & training on AWS, Terraform and DevOps
 
 ## Reporting Issues
 
-We use GitHub [Issues](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/issues)
-to track community reported issues and missing features.
+We use GitHub [Issues] to track community reported issues and missing features.
 
 ## Contributing
 
 Contributions are always encouraged and welcome! For the process of accepting changes, we use
-[Pull Requests](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/pulls). If you’d like more information, please
-see our [Contribution Guidelines](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/CONTRIBUTING.md).
+[Pull Requests]. If you'd like more information, please see our [Contribution Guidelines].
 
 ## Makefile Targets
 
-This repository comes with a handy
-[Makefile](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/Makefile).
+This repository comes with a handy [Makefile].
 Run `make help` to see details on each available target.
 
 ## License
 
 This module is licensed under the Apache License Version 2.0, January 2004.
-Please see [LICENSE](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/LICENSE) for full details.
+Please see [LICENSE] for full details.
 
-Copyright &copy; 2020 Mineiros GmbH
+Copyright &copy; 2020 [Mineiros GmbH][homepage]
+
+<!-- References -->
+
+[homepage]: https://mineiros.io/?ref=terraform-aws-cognito-user-pool
+[hello@mineiros.io]: mailto:hello@mineiros.io
+
+[badge-build]: https://mineiros.semaphoreci.com/badges/terraform-aws-cognito-user-pool/branches/master.svg?style=shields&key=df11a416-f581-4d35-917a-fa3c2de2048e
+[badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-cognito-user-pool.svg?label=latest&sort=semver
+[badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
+[badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.20+-623CE4.svg?logo=terraform
+[badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
+
+<!-- markdown-link-check-disable -->
+[build-status]: https://mineiros.semaphoreci.com/projects/terraform-aws-cognito-user-pool
+[releases-github]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/releases
+<!-- markdown-link-check-enable -->
+[releases-terraform]: https://github.com/hashicorp/terraform/releases
+[apache20]: https://opensource.org/licenses/Apache-2.0
+[slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
+
+[Terraform]: https://www.terraform.io
+[AWS]: https://aws.amazon.com/
+[Semantic Versioning (SemVer)]: https://semver.org/
+
+<!-- markdown-link-check-disable -->
+[examples/example/main.tf]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/examples/example/main.tf
+[variables.tf]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/variables.tf
+[examples/]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/examples
+[Issues]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/issues
+[LICENSE]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/LICENSE
+[Makefile]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/Makefile
+[Pull Requests]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/pulls
+[Contribution Guidelines]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/CONTRIBUTING.md
+<!-- markdown-link-check-enable -->
+
+[Cognito User Pools]: https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html
+[attributes docs]: https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html
+[Terraform AWS Cognito User Pool Client Docs]: https://www.terraform.io/docs/providers/aws/r/cognito_user_pool_client.html
