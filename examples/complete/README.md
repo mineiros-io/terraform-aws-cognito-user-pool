@@ -11,7 +11,8 @@ shows how to deploy a Cognito User Pool with custom settings.
 
 ```hcl
 module "cognito_user_pool" {
-  source = "git@github.com:mineiros-io/terraform-cognito-user-pool.git?ref=v0.0.1"
+  source  = "mineiros-io/cognito-user-pool/aws"
+  version = "~> 0.1.0"
 
   name = "complete-example-userpool"
 
