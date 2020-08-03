@@ -59,7 +59,7 @@ Most basic usage just setting required arguments:
 ```hcl
 module "terraform-aws-cognito-user-pool" {
   source  = "mineiros-io/cognito-user-pool/aws"
-  version = "0.0.2"
+  version = "~> 0.1.0"
 
   name = "application-userpool"
 }
