@@ -147,8 +147,8 @@ variable "default_client_write_attributes" {
 
 variable "invite_email_subject" {
   type        = string
-  description = "(Optional) The message template for email messages."
-  default     = "Your verification code"
+  description = "(Optional) The subject for email messages."
+  default     = "Your new account."
 }
 
 variable "invite_email_message" {
