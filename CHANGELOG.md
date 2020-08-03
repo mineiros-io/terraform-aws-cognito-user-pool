@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix example documentation to point to terraform registry
 - Fix `string_attribute_constraints` default values for string attributes to prevent non-idempotent plan.
 
+### Added
+- Add test to validate idempotency after apply
+
 ## [0.1.0] - 2020-08-03
 ### Changed
 - Add support for terraform aws provider 3.x
