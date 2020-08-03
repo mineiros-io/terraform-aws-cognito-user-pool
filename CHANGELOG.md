@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fix email subject for admin invites
 - Fix example documentation to point to terraform registry
+- Fix `string_attribute_constraints` default values for string attributes to prevent non-idempotent plan.
 
 ## [0.1.0] - 2020-08-03
 ### Changed
