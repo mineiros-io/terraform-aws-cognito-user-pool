@@ -12,7 +12,7 @@ shows how to deploy a Cognito User Pool with custom settings.
 ```hcl
 module "cognito_user_pool" {
   source  = "mineiros-io/cognito-user-pool/aws"
-  version = "~> 0.1.0"
+  version = "~> 0.1.1"
 
   name = "complete-example-userpool"
 

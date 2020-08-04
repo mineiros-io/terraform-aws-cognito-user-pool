@@ -12,7 +12,8 @@ defined in the [variables.tf] file of this module.
 
 ```hcl
 module "cognito_user_pool" {
-  source = "git@github.com:mineiros-io/terraform-cognito-user-pool.git?ref=v0.0.1"
+  source  = "mineiros-io/cognito-user-pool/aws"
+  version = "~> 0.1.1"
 
   name = "example-userpool"
 }

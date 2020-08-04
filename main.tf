@@ -88,14 +88,11 @@ resource "aws_cognito_user_pool" "user_pool" {
       }
 
       dynamic string_attribute_constraints {
-        for_each = try(coalesce(
-          lookup(attribute.value, "min_length", null),
-          lookup(attribute.value, "max_length", null)
-        ), null) == null ? [] : [true]
+        for_each = attribute.value.type == "string" ? [true] : []
 
         content {
-          min_length = lookup(attribute.value, "min_length", null)
-          max_length = lookup(attribute.value, "max_length", null)
+          min_length = lookup(attribute.value, "min_length", 0)
+          max_length = lookup(attribute.value, "max_length", 2048)
         }
       }
 
