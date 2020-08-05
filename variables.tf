@@ -66,6 +66,18 @@ variable "clients" {
   default = []
 }
 
+variable "domain" {
+  description = "(Optional) Type a domain prefix to use for the sign-up and sign-in pages that are hosted by Amazon Cognito, e.g. 'https://{YOUR_PREFIX}.auth.eu-west-1.amazoncognito.com'. The prefix must be unique across the selected AWS Region. Domain names can only contain lower-case letters, numbers, and hyphens."
+  type        = string
+  default     = null
+}
+
+variable "certificate_arn" {
+  description = "(Optional) The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain."
+  type        = string
+  default     = null
+}
+
 variable "default_client_allowed_oauth_flows" {
   description = "(Optional) List of allowed OAuth flows. Possible flows are 'code', 'implicit', and 'client_credentials'."
   type        = list(string)
