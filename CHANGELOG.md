@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2020-08-05
+### Added
+- Add support for `aws_cognito_user_pool_domain`
+
 ## [0.1.1] - 2020-08-04
 ### Fixed
 - Fix email subject for admin invites
@@ -30,8 +34,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add unit tests for basic use cases
 
 <!-- markdown-link-check-disable -->
-[Unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.1...HEAD
-[0.1.1]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.0...v0.1.1
+[Unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.1...v0.1.2
 <!-- markdown-link-check-enable -->
+[0.1.1]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.0.1...v0.1.0
 [0.0.1]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/releases/tag/v0.0.1

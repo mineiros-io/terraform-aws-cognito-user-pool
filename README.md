@@ -46,9 +46,9 @@ pre-configured.
 **Standard Cognito Features**:
   Create a Cognito User Pool with pre-configured best practices.
   Create Cognito User Pool Clients.
+  Create a Cognito User Pool Domain.
 
 - *Features not yet implemented*:
-  [`cognito_user_pool_domain`](https://www.terraform.io/docs/providers/aws/r/cognito_user_pool_domain.html)
   [`cognito_user_group`](https://www.terraform.io/docs/providers/aws/r/cognito_user_group.html)
   [`cognito_resource_server`](https://www.terraform.io/docs/providers/aws/r/cognito_resource_server.html)
 
@@ -59,7 +59,7 @@ Most basic usage just setting required arguments:
 ```hcl
 module "terraform-aws-cognito-user-pool" {
   source  = "mineiros-io/cognito-user-pool/aws"
-  version = "~> 0.1.1"
+  version = "~> 0.1.2"
 
   name = "application-userpool"
 }
@@ -350,6 +350,23 @@ for details and use-cases.
     Alice     = "Bob"
   }
   ```
+#### Cognito User Pool Domain
+
+- **`domain`**: *(Optional `string`)*
+
+  The domain name that should be used. Can be set to a FQDN or prefix.
+  If no FQDN and `certificate_arn` are set, the domain prefix will be used for
+  the sign-up and sign-in pages that are hosted by Amazon Cognito,
+  e.g. `https://{YOUR_PREFIX}.auth.eu-west-1.amazoncognito.com`.
+  The prefix must be unique across the selected AWS Region.
+  Domain names can only contain lower-case letters, numbers, and hyphens. 
+  
+    Default is not to use a custom domain.
+
+- **`certificate_arn `**: *(Optional `string`)*
+
+  The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain.
+  Default is not to use a custom domain.
 
 #### Cognito User Pool Clients
 

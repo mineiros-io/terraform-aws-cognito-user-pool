@@ -201,3 +201,11 @@ resource "aws_cognito_user_pool_client" "client" {
   user_pool_id                         = aws_cognito_user_pool.user_pool[0].id
   write_attributes                     = each.value.write_attributes
 }
+
+resource "aws_cognito_user_pool_domain" "domain" {
+  count = var.module_enabled && var.domain != null ? 1 : 0
+
+  domain          = var.domain
+  certificate_arn = var.certificate_arn
+  user_pool_id    = aws_cognito_user_pool.user_pool[0].id
+}

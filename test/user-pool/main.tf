@@ -19,6 +19,7 @@ provider "aws" {
 module "cognito_user_pool" {
   source = "../../"
   name   = var.name
+  domain = "mineiros-test"
 
   schema_attributes = var.schema_attributes
 }

@@ -11,6 +11,11 @@ output "user_pool" {
   value       = try(aws_cognito_user_pool.user_pool[0], null)
 }
 
+output "domain" {
+  description = "The full `aws_cognito_user_pool` object."
+  value       = try(aws_cognito_user_pool_domain.domain[0], null)
+}
+
 output "clients" {
   description = "All Cognito User Pool Client resources associated with the Cognito User Pool."
   value       = { for client in aws_cognito_user_pool_client.client : client.name => merge(client, { client_secret = null }) }
