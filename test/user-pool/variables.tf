@@ -29,6 +29,12 @@ variable "name" {
   default     = "test-pool"
 }
 
+variable "domain" {
+  type        = string
+  description = "The domain name that should be used. Can be set to a FQDN or prefix."
+  default     = "mineiros-test"
+}
+
 variable "clients" {
   description = "(Optional) A list of objects with the clients definitions."
   type        = any
