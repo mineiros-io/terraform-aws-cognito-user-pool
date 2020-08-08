@@ -18,6 +18,7 @@ on [Amazon Web Services (AWS)][AWS].
   - [Top-level Arguments](#top-level-arguments)
     - [Module Configuration](#module-configuration)
     - [Cognito User Pool](#cognito-user-pool)
+    - [Cognito User Pool Domain](#cognito-user-pool-domain)
     - [Cognito User Pool Clients](#cognito-user-pool-clients)
     - [Cognito User Pool Clients Default Values](#cognito-user-pool-clients-default-values)
 - [Module Attributes Reference](#module-attributes-reference)
@@ -66,7 +67,7 @@ module "terraform-aws-cognito-user-pool" {
 ```
 
 Advanced usage as found in
-[examples/complete/main.tf](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/complete/example/main.tf)
+[examples/complete/main.tf](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/examples/complete/main.tf)
 setting all required and optional arguments to their default values.
 
 ## Module Argument Reference
