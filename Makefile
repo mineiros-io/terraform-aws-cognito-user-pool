@@ -57,9 +57,8 @@ test/pre-commit:
 test/unit-tests: DOCKER_FLAGS += ${DOCKER_SSH_FLAGS}
 test/unit-tests: DOCKER_FLAGS += ${DOCKER_AWS_FLAGS}
 test/unit-tests:
-	@echo "${YELLOW}No tests defined.${RESET}"
-	# @echo "${YELLOW}[TEST] ${GREEN}Start Running Go Tests in Docker Container.${RESET}"
-	# $(call go-test,./test/...)
+	@echo "${YELLOW}[TEST] ${GREEN}Start Running Go Tests in Docker Container.${RESET}"
+	$(call go-test,./test/...)
 
 ## Clean up cache and temporary files
 .PHONY: clean
