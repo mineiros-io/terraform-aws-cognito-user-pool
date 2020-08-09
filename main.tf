@@ -76,10 +76,7 @@ resource "aws_cognito_user_pool" "user_pool" {
       mutable                  = try(attribute.value.mutable, true)
 
       dynamic number_attribute_constraints {
-        for_each = try(coalesce(
-          lookup(attribute.value, "min_value", null),
-          lookup(attribute.value, "max_value", null)
-        ), null) == null ? [] : [true]
+        for_each = attribute.value.type == "Number" ? [true] : []
 
         content {
           min_value = lookup(attribute.value, "min_value", null)
@@ -88,7 +85,7 @@ resource "aws_cognito_user_pool" "user_pool" {
       }
 
       dynamic string_attribute_constraints {
-        for_each = lower(attribute.value.type) == "string" ? [true] : []
+        for_each = attribute.value.type == "String" ? [true] : []
 
         content {
           min_length = lookup(attribute.value, "min_length", 0)
