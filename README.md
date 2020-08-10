@@ -162,10 +162,12 @@ for details and use-cases.
   The ARN of the email source.
   Default is `null`.
 
+<!-- markdown-link-check-disable -->
 - **`email_from_address`**: *(Optional `string`)*
 
   Sender’s email address or sender’s name with their email address (e.g. 'john@smith.com' or 'John Smith <john@smith.com>').
   Default is `null`.
+<!-- markdown-link-check-enable -->
 
 - **`mfa_configuration`**: *(Optional `string`)*
 
@@ -544,17 +546,16 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 
 [homepage]: https://mineiros.io/?ref=terraform-aws-cognito-user-pool
 
-<!-- markdown-link-check-disable -->
 [hello@mineiros.io]: mailto:hello@mineiros.io
-<!-- markdown-link-check-disable -->
+[badge-build]: https://github.com/mineiros-io/terraform-aws-lambda-function/workflows/CI/CD%20Pipeline/badge.svg
 
-[badge-build]: https://mineiros.semaphoreci.com/badges/terraform-aws-cognito-user-pool/branches/master.svg?style=shields&key=df11a416-f581-4d35-917a-fa3c2de2048e
 [badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-cognito-user-pool.svg?label=latest&sort=semver
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
 [badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.20+-623CE4.svg?logo=terraform
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
 
-[build-status]: https://mineiros.semaphoreci.com/projects/terraform-aws-cognito-user-pool
+[build-status]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/actions
+
 [releases-github]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/releases
 [releases-terraform]: https://github.com/hashicorp/terraform/releases
 [apache20]: https://opensource.org/licenses/Apache-2.0
