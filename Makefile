@@ -5,8 +5,7 @@ BUILD_TOOLS_VERSION      ?= v0.5.4
 BUILD_TOOLS_DOCKER_REPO  ?= mineiros/build-tools
 BUILD_TOOLS_DOCKER_IMAGE ?= ${BUILD_TOOLS_DOCKER_REPO}:${BUILD_TOOLS_VERSION}
 
-# if running in CI (e.g. Semaphore CI)
-# https://docs.semaphoreci.com/ci-cd-environment/environment-variables/#ci
+# If running in CI
 #
 # to disable TF_IN_AUTOMATION in CI set it to empty
 # https://www.terraform.io/docs/commands/environment-variables.html#tf_in_automation
@@ -57,9 +56,8 @@ test/pre-commit:
 test/unit-tests: DOCKER_FLAGS += ${DOCKER_SSH_FLAGS}
 test/unit-tests: DOCKER_FLAGS += ${DOCKER_AWS_FLAGS}
 test/unit-tests:
-	@echo "${YELLOW}No tests defined.${RESET}"
-	# @echo "${YELLOW}[TEST] ${GREEN}Start Running Go Tests in Docker Container.${RESET}"
-	# $(call go-test,./test/...)
+	@echo "${YELLOW}[TEST] ${GREEN}Start Running Go Tests in Docker Container.${RESET}"
+	$(call go-test,./test/...)
 
 ## Clean up cache and temporary files
 .PHONY: clean

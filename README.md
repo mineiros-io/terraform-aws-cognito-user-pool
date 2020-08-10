@@ -18,6 +18,7 @@ on [Amazon Web Services (AWS)][AWS].
   - [Top-level Arguments](#top-level-arguments)
     - [Module Configuration](#module-configuration)
     - [Cognito User Pool](#cognito-user-pool)
+    - [Cognito User Pool Domain](#cognito-user-pool-domain)
     - [Cognito User Pool Clients](#cognito-user-pool-clients)
     - [Cognito User Pool Clients Default Values](#cognito-user-pool-clients-default-values)
 - [Module Attributes Reference](#module-attributes-reference)
@@ -66,7 +67,7 @@ module "terraform-aws-cognito-user-pool" {
 ```
 
 Advanced usage as found in
-[examples/complete/main.tf](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/complete/example/main.tf)
+[examples/complete/main.tf](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/examples/complete/main.tf)
 setting all required and optional arguments to their default values.
 
 ## Module Argument Reference
@@ -161,10 +162,12 @@ for details and use-cases.
   The ARN of the email source.
   Default is `null`.
 
+<!-- markdown-link-check-disable -->
 - **`email_from_address`**: *(Optional `string`)*
 
   Sender’s email address or sender’s name with their email address (e.g. 'john@smith.com' or 'John Smith <john@smith.com>').
   Default is `null`.
+<!-- markdown-link-check-enable -->
 
 - **`mfa_configuration`**: *(Optional `string`)*
 
@@ -542,18 +545,18 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 <!-- References -->
 
 [homepage]: https://mineiros.io/?ref=terraform-aws-cognito-user-pool
-[hello@mineiros.io]: mailto:hello@mineiros.io
 
-[badge-build]: https://mineiros.semaphoreci.com/badges/terraform-aws-cognito-user-pool/branches/master.svg?style=shields&key=df11a416-f581-4d35-917a-fa3c2de2048e
+[hello@mineiros.io]: mailto:hello@mineiros.io
+[badge-build]: https://github.com/mineiros-io/terraform-aws-lambda-function/workflows/CI/CD%20Pipeline/badge.svg
+
 [badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-cognito-user-pool.svg?label=latest&sort=semver
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
 [badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.20+-623CE4.svg?logo=terraform
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
 
-<!-- markdown-link-check-disable -->
-[build-status]: https://mineiros.semaphoreci.com/projects/terraform-aws-cognito-user-pool
+[build-status]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/actions
+
 [releases-github]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/releases
-<!-- markdown-link-check-enable -->
 [releases-terraform]: https://github.com/hashicorp/terraform/releases
 [apache20]: https://opensource.org/licenses/Apache-2.0
 [slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
@@ -562,7 +565,6 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 [AWS]: https://aws.amazon.com/
 [Semantic Versioning (SemVer)]: https://semver.org/
 
-<!-- markdown-link-check-disable -->
 [examples/example/main.tf]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/examples/example/main.tf
 [variables.tf]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/variables.tf
 [examples/]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/examples
@@ -571,7 +573,6 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 [Makefile]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/Makefile
 [Pull Requests]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/pulls
 [Contribution Guidelines]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/CONTRIBUTING.md
-<!-- markdown-link-check-enable -->
 
 [Cognito User Pools]: https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html
 [attributes docs]: https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html
