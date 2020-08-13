@@ -106,7 +106,13 @@ for details and use-cases.
 - **`alias_attributes`**: *(Optional `set(string)`)*
 
   Attributes supported as an alias for this user pool. Possible values: `phone_number`, `email`, or `preferred_username`.
-  Default is `["email", "preferred_username",]`.
+  Conflicts with `username_attributes`.
+  Default is `["email", "preferred_username",]` if `username_attributes` is not set.
+
+- **`username_attributes`**: *(Optional `set(string)`)*
+
+  Specifies whether `email` addresse or `phone_number` can be specified as usernames when a user signs up. Conflicts with `alias_attributes`.
+  Default is to use `alias_attributes`.
 
 - **`allow_admin_create_user_only`**: *(Optional `bool`)*
 
@@ -362,8 +368,8 @@ for details and use-cases.
   the sign-up and sign-in pages that are hosted by Amazon Cognito,
   e.g. `https://{YOUR_PREFIX}.auth.eu-west-1.amazoncognito.com`.
   The prefix must be unique across the selected AWS Region.
-  Domain names can only contain lower-case letters, numbers, and hyphens. 
-  
+  Domain names can only contain lower-case letters, numbers, and hyphens.
+
     Default is not to use a custom domain.
 
 - **`certificate_arn `**: *(Optional `string`)*
