@@ -29,11 +29,14 @@ variable "advanced_security_mode" {
 
 variable "alias_attributes" {
   type        = set(string)
-  description = "(Optional) Attributes supported as an alias for this user pool. Possible values: 'phone_number', 'email', or 'preferred_username'."
-  default = [
-    "email",
-    "preferred_username",
-  ]
+  description = "(Optional) Attributes supported as an alias for this user pool. Possible values: 'phone_number', 'email', or 'preferred_username'. Conflicts with username_attributes."
+  default     = null
+}
+
+variable "username_attributes" {
+  type        = set(string)
+  description = "(Optional) Specifies whether email addresses or phone numbers can be specified as usernames when a user signs up. Conflicts with alias_attributes."
+  default     = null
 }
 
 variable "allow_admin_create_user_only" {

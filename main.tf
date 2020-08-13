@@ -8,11 +8,19 @@
 # https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html
 # ------------------------------------------------------------------------------
 
+locals {
+  alias_attributes = var.alias_attributes == null && var.username_attributes == null ? [
+    "email",
+    "preferred_username",
+  ] : null
+}
+
 resource "aws_cognito_user_pool" "user_pool" {
   count = var.module_enabled ? 1 : 0
 
   name                     = var.name
-  alias_attributes         = var.alias_attributes
+  alias_attributes         = local.alias_attributes
+  username_attributes      = var.username_attributes
   auto_verified_attributes = var.auto_verified_attributes
 
   sms_authentication_message = var.sms_authentication_message
