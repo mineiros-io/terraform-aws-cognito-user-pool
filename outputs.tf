@@ -6,9 +6,21 @@
 # OUTPUT ALL RESOURCES AS FULL OBJECTS
 # ------------------------------------------------------------------------------
 
+# fix tf13 output diff
+locals {
+  user_pool = try(aws_cognito_user_pool.user_pool[0], {})
+
+  o_user_pool_tags = try(local.user_pool.tags, {})
+
+  o_user_pool = var.module_enabled ? merge(local.user_pool, {
+    tags = local.o_user_pool_tags != null ? local.user_pool.tags : {}
+  }) : null
+}
+
+
 output "user_pool" {
   description = "The full `aws_cognito_user_pool` object."
-  value       = try(aws_cognito_user_pool.user_pool[0], null)
+  value       = local.o_user_pool
 }
 
 output "domain" {
