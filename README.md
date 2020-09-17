@@ -2,15 +2,18 @@
 
 [![Build Status][badge-build]][build-status]
 [![GitHub tag (latest SemVer)][badge-semver]][releases-github]
-[![license][badge-license]][apache20]
 [![Terraform Version][badge-terraform]][releases-terraform]
+[![AWS Provider Version][badge-tf-aws]][releases-aws-provider]
 [![Join Slack][badge-slack]][slack]
 
 # terraform-aws-cognito-user-pool
 
-A [Terraform] 0.12 module for deploying and managing
+A [Terraform] module for deploying and managing
 [Cognito User Pools]
 on [Amazon Web Services (AWS)][AWS].
+
+***This module supports Terraform v0.13 as well as v0.12.20 and above
+and is compatible with the terraform AWS provider v3 as well as v2.54 and above.***
 
 - [Module Features](#module-features)
 - [Getting Started](#getting-started)
@@ -60,7 +63,7 @@ Most basic usage just setting required arguments:
 ```hcl
 module "terraform-aws-cognito-user-pool" {
   source  = "mineiros-io/cognito-user-pool/aws"
-  version = "~> 0.1.4"
+  version = "~> 0.2.0"
 
   name = "application-userpool"
 }
@@ -543,6 +546,8 @@ Run `make help` to see details on each available target.
 
 ## License
 
+[![license][badge-license]][apache20]
+
 This module is licensed under the Apache License Version 2.0, January 2004.
 Please see [LICENSE] for full details.
 
@@ -561,6 +566,9 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
 
 [build-status]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/actions
+
+[badge-tf-aws]: https://img.shields.io/badge/AWS-3%20and%202.54+-F8991D.svg?logo=terraform
+[releases-aws-provider]: https://github.com/terraform-providers/terraform-provider-aws/releases
 
 [releases-github]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/releases
 [releases-terraform]: https://github.com/hashicorp/terraform/releases

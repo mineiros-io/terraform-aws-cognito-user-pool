@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2020-08-13
+### Changed
+- Add support for Terraform v0.13
+- Prepared support for Terraform 0.14
+
 ## [0.1.4] - 2020-08-13
 ### Added
 - Add support for `username_attributes` argument.
@@ -47,9 +52,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add unit tests for basic use cases.
 
 <!-- markdown-link-check-disable -->
-[Unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.4...HEAD
-[0.1.4]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.3...v0.1.4
+[Unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.4...v0.2.0
 <!-- markdown-link-check-enable -->
+[0.1.4]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.0...v0.1.1

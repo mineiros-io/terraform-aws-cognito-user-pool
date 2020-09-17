@@ -13,7 +13,7 @@ defined in the [variables.tf] file of this module.
 ```hcl
 module "cognito_user_pool" {
   source  = "mineiros-io/cognito-user-pool/aws"
-  version = "~> 0.1.4"
+  version = "~> 0.2.0"
 
   name = "example-userpool"
 }

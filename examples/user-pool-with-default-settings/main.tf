@@ -9,8 +9,7 @@
 # ------------------------------------------------------------------------------
 
 provider "aws" {
-  version = "~> 3.0"
-  region  = "us-east-1"
+  region = "us-east-1"
 }
 
 # ------------------------------------------------------------------------------
@@ -19,7 +18,7 @@ provider "aws" {
 
 module "cognito_user_pool" {
   source  = "mineiros-io/cognito-user-pool/aws"
-  version = "~> 0.1.4"
+  version = "~> 0.2.0"
 
   name = "example-userpool"
 }
