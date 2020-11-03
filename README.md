@@ -491,8 +491,8 @@ for details and use-cases.
 The following attributes are exported by the module:
 
 - **`user_pool`**: The `cognito_user_pool` object.
-- **`clients`**: A list of `cognito_user_pool_client` objects.
-- **`client_secrets`**: The secrets for all created `cognito_user_pool_client` resources.
+- **`clients`**: A map of `cognito_user_pool_client` objects. The map is keyed by the `name` of the created clients. Client secrets are filtered out of this map and are available through the `client_secrets` output variable and flagged as sensitive.
+- **`client_secrets`**: A sensitive map of client secrets for all created `cognito_user_pool_client` resources. The map is keyed by the `name` of the created clients.
 
 ## External Documentation
 
