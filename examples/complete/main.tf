@@ -17,7 +17,7 @@ provider "aws" {
 
 module "cognito_user_pool" {
   source  = "mineiros-io/cognito-user-pool/aws"
-  version = "~> 0.2.0"
+  version = "~> 0.3.0"
 
   name = "complete-example-userpool"
 

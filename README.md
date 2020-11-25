@@ -63,7 +63,7 @@ Most basic usage just setting required arguments:
 ```hcl
 module "terraform-aws-cognito-user-pool" {
   source  = "mineiros-io/cognito-user-pool/aws"
-  version = "~> 0.2.0"
+  version = "~> 0.3.0"
 
   name = "application-userpool"
 }
@@ -142,13 +142,14 @@ for details and use-cases.
   The attributes to be auto-verified. Possible values: `email`, `phone_number`.
   Default is `["email"]`.
 
+- **`user_device_tracking`**: *(Optional `string`)*
+
+  Configure tracking of user devices. Set to `OFF` to disable tracking, `ALWAYS` to track all devices or `USER_OPT_IN` to only track when user opts in.
+  Default is `USER_OPT_IN`.
+
 - **`challenge_required_on_new_device`**: *(Optional `bool`)*
   Indicates whether a challenge is required on a new device. Only applicable to a new device.
-  Default is `true`.
-
-- **`device_only_remembered_on_user_prompt`**: *(Optional `string`)*
-
-  If true, a device is only remembered on user prompt.
+  Only applied when `user_device_tracking` in enabled.
   Default is `true`.
 
 - **`enable_username_case_sensitivity`**: *(Optional `bool`)*

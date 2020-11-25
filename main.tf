@@ -36,9 +36,13 @@ resource "aws_cognito_user_pool" "user_pool" {
     temporary_password_validity_days = var.temporary_password_validity_days
   }
 
-  device_configuration {
-    challenge_required_on_new_device      = var.challenge_required_on_new_device
-    device_only_remembered_on_user_prompt = var.device_only_remembered_on_user_prompt
+  dynamic "device_configuration" {
+    for_each = contains(["ALWAYS", "USER_OPT_IN"], upper(var.user_device_tracking)) ? [true] : []
+
+    content {
+      device_only_remembered_on_user_prompt = var.user_device_tracking == "USER_OPT_IN"
+      challenge_required_on_new_device      = var.challenge_required_on_new_device
+    }
   }
 
   dynamic software_token_mfa_configuration {
