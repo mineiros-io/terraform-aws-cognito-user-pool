@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - The type of the clients output is a map of objects instead of a list.
 
+## [0.3.0] - 2020-11-25
+### Changes
+- Add argument `user_device_tracking` to set device tracking to `OFF`, `ALWAYS` or `USER_OPT_IN`
+- BREAKING CHANGE: Remove argument `device_only_remembered_on_user_prompt`. Replaced by `user_device_tracking`.
+  Default behavior did not change. How to migrate:
+  - `device_only_remembered_on_user_prompt=true`: Set `user_device_tracking='USER_OPT_IN'`
+  - `device_only_remembered_on_user_prompt=false`: Set `user_device_tracking='ALWAYS'`
+  - `device_only_remembered_on_user_prompt=null`: Set `user_device_tracking='OFF'`
+
+### Fixes
+- Allow to cleanly turn off user device tracking by setting new variable `user_device_tracking` to `OFF`. [#23](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/issues/23)
+
 ## [0.2.0] - 2020-08-13
 ### Changed
 - Add support for Terraform v0.13
@@ -54,9 +66,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add unit tests for basic use cases.
 
 <!-- markdown-link-check-disable -->
-[Unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.4...v0.2.0
+[Unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.2.0...v0.3.0
 <!-- markdown-link-check-enable -->
+[0.2.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.4...v0.2.0
 [0.1.4]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.1...v0.1.2
