@@ -192,10 +192,10 @@ variable "challenge_required_on_new_device" {
   default     = true
 }
 
-variable "device_only_remembered_on_user_prompt" {
-  type        = bool
-  description = "(Optional) If true, a device is only remembered on user prompt."
-  default     = true
+variable "user_device_tracking" {
+  type        = string
+  description = "(Optional) Configure tracking of user devices. Set to 'OFF' to disable tracking, 'ALWAYS' to track all devices or 'USER_OPT_IN' to only track when user opts in."
+  default     = "USER_OPT_IN"
 }
 
 variable "enable_username_case_sensitivity" {
