@@ -6,14 +6,16 @@
 [![AWS Provider Version][badge-tf-aws]][releases-aws-provider]
 [![Join Slack][badge-slack]][slack]
 
-# terraform-aws-cognito-user-pool
+# mineiros-io/cognito-user-pool/aws
 
 A [Terraform] module for deploying and managing
 [Cognito User Pools]
 on [Amazon Web Services (AWS)][AWS].
 
-***This module supports Terraform v0.13 as well as v0.12.20 and above
-and is compatible with the terraform AWS provider v3 as well as v2.54 and above.***
+*This module supports Terraform v0.14, v0.13 as well as v0.12.20 and above
+and is compatible with the terraform AWS provider v3 as well as v2.54 and above.*
+
+**We, [Mineiros][mineiros-library], offer [professional support][mineiros-pricing] for this module.**
 
 - [Module Features](#module-features)
 - [Getting Started](#getting-started)
@@ -558,12 +560,15 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 
 [homepage]: https://mineiros.io/?ref=terraform-aws-cognito-user-pool
 
+[mineiros-library]: https://www.mineiros.io/solutions/terraform-library
+[mineiros-pricing]: https://www.mineiros.io/solutions/terraform-library#pricing
+
 [hello@mineiros.io]: mailto:hello@mineiros.io
 [badge-build]: https://github.com/mineiros-io/terraform-aws-lambda-function/workflows/CI/CD%20Pipeline/badge.svg
 
 [badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-cognito-user-pool.svg?label=latest&sort=semver
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
-[badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.20+-623CE4.svg?logo=terraform
+[badge-terraform]: https://img.shields.io/badge/terraform-0.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
 
 [build-status]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/actions
