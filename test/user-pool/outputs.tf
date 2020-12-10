@@ -9,6 +9,7 @@
 output "user_pool" {
   description = "All outputs exposed by the module."
   value       = merge(module.cognito_user_pool, { client_secrets = null })
+  sensitive   = true
 }
 
 output "client_secrets" {

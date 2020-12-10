@@ -45,7 +45,7 @@ resource "aws_cognito_user_pool" "user_pool" {
     }
   }
 
-  dynamic software_token_mfa_configuration {
+  dynamic "software_token_mfa_configuration" {
     for_each = var.allow_software_mfa_token ? [true] : []
 
     content {
@@ -76,7 +76,7 @@ resource "aws_cognito_user_pool" "user_pool" {
     }
   }
 
-  dynamic schema {
+  dynamic "schema" {
     for_each = var.schema_attributes
     iterator = attribute
 
@@ -87,7 +87,7 @@ resource "aws_cognito_user_pool" "user_pool" {
       developer_only_attribute = try(attribute.value.developer_only_attribute, false)
       mutable                  = try(attribute.value.mutable, true)
 
-      dynamic number_attribute_constraints {
+      dynamic "number_attribute_constraints" {
         for_each = attribute.value.type == "Number" ? [true] : []
 
         content {
@@ -96,7 +96,7 @@ resource "aws_cognito_user_pool" "user_pool" {
         }
       }
 
-      dynamic string_attribute_constraints {
+      dynamic "string_attribute_constraints" {
         for_each = attribute.value.type == "String" ? [true] : []
 
         content {
@@ -108,7 +108,7 @@ resource "aws_cognito_user_pool" "user_pool" {
     }
   }
 
-  dynamic lambda_config {
+  dynamic "lambda_config" {
     for_each = try(coalesce(
       var.lambda_create_auth_challenge,
       var.lambda_custom_message,
@@ -141,7 +141,7 @@ resource "aws_cognito_user_pool" "user_pool" {
   # Due to Cognito API restrictions, the SMS configuration cannot be removed without recreating the Cognito User Pool.
   # For user data safety, this resource will ignore the removal of this configuration by disabling drift detection.
   # To force resource recreation after this configuration has been applied, see the taint command.
-  dynamic sms_configuration {
+  dynamic "sms_configuration" {
     for_each = var.sms_configuration != null ? [var.sms_configuration] : []
 
     content {

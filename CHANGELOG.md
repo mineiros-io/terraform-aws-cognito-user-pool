@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2020-12-09
+### Changed
+- Add support for Terraform v0.14
+
 ## [0.3.0] - 2020-11-25
 ### Changes
 - Add argument `user_device_tracking` to set device tracking to `OFF`, `ALWAYS` or `USER_OPT_IN`
@@ -22,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.0] - 2020-08-13
 ### Changed
 - Add support for Terraform v0.13
-- Prepared support for Terraform 0.14
+- Prepared support for Terraform v0.14
 
 ## [0.1.4] - 2020-08-13
 ### Added
@@ -65,9 +69,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add unit tests for basic use cases.
 
 <!-- markdown-link-check-disable -->
-[Unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.3.0...HEAD
-[0.3.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.2.0...v0.3.0
+[Unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.3.0...v0.4.0
 <!-- markdown-link-check-enable -->
+[0.3.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.4...v0.2.0
 [0.1.4]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.2...v0.1.3
