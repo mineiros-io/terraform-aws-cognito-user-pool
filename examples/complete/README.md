@@ -42,8 +42,8 @@ module "cognito_user_pool" {
   email_message_by_link = "Please click the link below to verify your email address. {##Verify Email##}."
   sms_message           = "Your verification code is {####}."
 
-  challenge_required_on_new_device      = true
-  device_only_remembered_on_user_prompt = false
+  challenge_required_on_new_device = true
+  user_device_tracking             = "USER_OPT_IN"
 
   # These paramters can be used to configure SES for emails
   # ...
