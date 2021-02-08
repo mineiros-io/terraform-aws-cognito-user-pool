@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1] - 2021-02-08
+### Fixed
+- Fixed examples to use new variable `user_device_tracking` instead of `device_only_remembered_on_user_prompt`
+
 ## [0.4.0] - 2020-12-09
 ### Changed
 - Add support for Terraform v0.14
