@@ -37,11 +37,11 @@ resource "aws_cognito_user_pool" "user_pool" {
   }
 
   dynamic "account_recovery_setting" {
-    for_each = length(var.account_recovery_setting_recovery_mechanisms) > 0 ? [true] : []
+    for_each = length(var.account_recovery_mechanisms) > 0 ? [true] : []
 
     content {
       dynamic "recovery_mechanism" {
-        for_each = var.account_recovery_setting_recovery_mechanisms
+        for_each = var.account_recovery_mechanisms
         iterator = recovery
 
         content {
