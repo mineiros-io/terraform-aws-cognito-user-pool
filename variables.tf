@@ -186,6 +186,24 @@ variable "auto_verified_attributes" {
   ]
 }
 
+variable "account_recovery_setting_recovery_mechanisms" {
+  type        = any
+  description = "(Optional) Account recovery mechanisms"
+  # Example:
+  #
+  # account_recovery_setting_recovery_mechanisms = [
+  #   {
+  #     name          = "verified_email"
+  #     priority      = 1
+  #   },{
+  #     name          = "verified_phone_number"
+  #     priority      = 2
+  #   }]
+
+  default = []
+}
+
+
 variable "challenge_required_on_new_device" {
   type        = bool
   description = "(Optional) Indicates whether a challenge is required on a new device. Only applicable to a new device."
