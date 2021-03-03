@@ -318,7 +318,7 @@ for details and use-cases.
   ```
 
 - **`account_recovery_mechanisms`**: *(Optional `any`)*
-  A list of recovery_mechanisms to be defined within `account_recovery_setting`. A `recovery_mechanism` is defined by a `name` and its `priority`. Valid values for `name` are verified_email, verified_phone_number, and admin_only.
+  A list of recovery_mechanisms to be inserted inside `account_recovery_setting`. A `recovery_mechanism` is defined by a `name` and its `priority`. Valid values for `name` are verified_email, verified_phone_number, and admin_only.
   Default is `[]`.
 
   **Example:**
