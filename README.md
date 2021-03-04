@@ -317,6 +317,25 @@ for details and use-cases.
     ]
   ```
 
+- **`account_recovery_mechanisms`**: *(Optional `any`)*
+  A list of recovery_mechanisms to be inserted inside `account_recovery_setting`. A `recovery_mechanism` is defined by a `name` and its `priority`. Valid values for `name` are verified_email, verified_phone_number, and admin_only.
+  Default is `[]`.
+
+  **Example:**
+
+  ```hcl
+  account_recovery_mechanisms = [
+    {
+      name          = "verified_email"
+      priority      = 1
+    },
+    {
+      name          = "verified_phone_number"
+      priority      = 2
+    }
+  ]
+  ```
+
 - **`sms_configuration`**: *(Optional `object({external_id = string, sns_caller_arn = string})`)*
 
   The `sms_configuration` with the `external_id` parameter used in IAM role trust relationships and the `sns_caller_arn` parameter to set the ARN of the Amazon SNS caller. This is usually the IAM role that you have given AWS Cognito permission to assume.
