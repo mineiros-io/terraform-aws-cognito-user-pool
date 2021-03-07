@@ -3,8 +3,8 @@ name: CI/CD Pipeline
 on: push
 
 env:
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.MINEIROS_TESTING_AWS_SECRET_ACCESS_KEY }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.MINEIROS_TESTING_AWS_ACCESS_KEY_ID }}
 
 jobs:
   pre-commit:
