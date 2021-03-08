@@ -13,7 +13,9 @@ A [Terraform] module for deploying and managing
 on [Amazon Web Services (AWS)][AWS].
 
 *This module supports Terraform v0.14, v0.13 as well as v0.12.20 and above
-and is compatible with the terraform AWS provider v3 as well as v2.54 and above.*
+and is compatible with the terraform AWS provider v3.19 and above.*
+
+The last version supporting terraform AWS provider v2.x is v0.4.1.
 
 **We, [Mineiros][mineiros-library], offer [professional support][mineiros-pricing] for this module.**
 
@@ -65,7 +67,7 @@ Most basic usage just setting required arguments:
 ```hcl
 module "terraform-aws-cognito-user-pool" {
   source  = "mineiros-io/cognito-user-pool/aws"
-  version = "~> 0.4.0"
+  version = "~> 0.5.0"
 
   name = "application-userpool"
 }
@@ -315,6 +317,25 @@ for details and use-cases.
         type = "DateTime"
       }
     ]
+  ```
+
+- **`account_recovery_mechanisms`**: *(Optional `any`)*
+  A list of recovery_mechanisms to be inserted inside `account_recovery_setting`. A `recovery_mechanism` is defined by a `name` and its `priority`. Valid values for `name` are verified_email, verified_phone_number, and admin_only.
+  Default is `[]`.
+
+  **Example:**
+
+  ```hcl
+  account_recovery_mechanisms = [
+    {
+      name          = "verified_email"
+      priority      = 1
+    },
+    {
+      name          = "verified_phone_number"
+      priority      = 2
+    }
+  ]
   ```
 
 - **`sms_configuration`**: *(Optional `object({external_id = string, sns_caller_arn = string})`)*
@@ -573,7 +594,7 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 
 [build-status]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/actions
 
-[badge-tf-aws]: https://img.shields.io/badge/AWS-3%20and%202.54+-F8991D.svg?logo=terraform
+[badge-tf-aws]: https://img.shields.io/badge/AWS-3.19+-F8991D.svg?logo=terraform
 [releases-aws-provider]: https://github.com/terraform-providers/terraform-provider-aws/releases
 
 [releases-github]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/releases

@@ -36,6 +36,22 @@ resource "aws_cognito_user_pool" "user_pool" {
     temporary_password_validity_days = var.temporary_password_validity_days
   }
 
+  dynamic "account_recovery_setting" {
+    for_each = length(var.account_recovery_mechanisms) > 0 ? [true] : []
+
+    content {
+      dynamic "recovery_mechanism" {
+        for_each = var.account_recovery_mechanisms
+        iterator = recovery
+
+        content {
+          name     = recovery.value.name
+          priority = recovery.value.priority
+        }
+      }
+    }
+  }
+
   dynamic "device_configuration" {
     for_each = contains(["ALWAYS", "USER_OPT_IN"], upper(var.user_device_tracking)) ? [true] : []
 

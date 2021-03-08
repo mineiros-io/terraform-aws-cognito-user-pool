@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0]
+### Added
+- Add support for `account_recovery_mechanisms`
+
+### Removed
+- BREAKING CHANGE: Drop support for Terraform AWS Provider version 2.x
+
 ## [0.4.1] - 2021-02-08
 ### Fixed
 - Fixed examples to use new variable `user_device_tracking` instead of `device_only_remembered_on_user_prompt`
@@ -73,9 +80,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add unit tests for basic use cases.
 
 <!-- markdown-link-check-disable -->
-[Unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.4.1...HEAD
-[0.4.1]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.4.0...v0.4.1
+[Unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.4.1...v0.5.0
 <!-- markdown-link-check-enable -->
+[0.4.1]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.1.4...v0.2.0

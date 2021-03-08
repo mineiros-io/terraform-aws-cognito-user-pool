@@ -17,7 +17,7 @@ provider "aws" {
 
 module "cognito_user_pool" {
   source  = "mineiros-io/cognito-user-pool/aws"
-  version = "~> 0.4.0"
+  version = "~> 0.5.0"
 
   name = "complete-example-userpool"
 
@@ -35,6 +35,17 @@ module "cognito_user_pool" {
 
   auto_verified_attributes = [
     "email"
+  ]
+
+  account_recovery_mechanisms = [
+    {
+      name     = "verified_email"
+      priority = 1
+    },
+    {
+      name     = "verified_phone_number"
+      priority = 2
+    }
   ]
 
   # If invited by an admin
