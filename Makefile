@@ -1,16 +1,17 @@
 # Set default shell to bash
 SHELL := /bin/bash -o pipefail
 
-BUILD_TOOLS_VERSION      ?= v0.7.0
+BUILD_TOOLS_VERSION      ?= v0.9.0
 BUILD_TOOLS_DOCKER_REPO  ?= mineiros/build-tools
 BUILD_TOOLS_DOCKER_IMAGE ?= ${BUILD_TOOLS_DOCKER_REPO}:${BUILD_TOOLS_VERSION}
 
-# If running in CI
+# If running in CI (e.g. GitHub Actions)
+# https://docs.github.com/en/actions/reference/environment-variables#default-environment-variables
 #
-# to disable TF_IN_AUTOMATION in CI set it to empty
+# To disable TF_IN_AUTOMATION in CI set it to empty
 # https://www.terraform.io/docs/commands/environment-variables.html#tf_in_automation
 #
-# we are using GNU style quiet commands to disable set V to non-empty e.g. V=1
+# We are using GNU style quiet commands to disable set V to non-empty e.g. V=1
 # https://www.gnu.org/software/automake/manual/html_node/Debugging-Make-Rules.html
 #
 ifdef CI
@@ -28,9 +29,8 @@ ifndef NOCOLOR
 endif
 
 DOCKER_RUN_FLAGS += --rm
-DOCKER_RUN_FLAGS += -v ${PWD}:/app/src
+DOCKER_RUN_FLAGS += -v ${PWD}:/build
 DOCKER_RUN_FLAGS += -e TF_IN_AUTOMATION
-DOCKER_RUN_FLAGS += -e USER_UID=$(shell id -u)
 
 DOCKER_SSH_FLAGS += -e SSH_AUTH_SOCK=/ssh-agent
 DOCKER_SSH_FLAGS += -v ${SSH_AUTH_SOCK}:/ssh-agent
@@ -45,7 +45,13 @@ DOCKER_RUN_CMD  = docker run ${DOCKER_FLAGS} ${BUILD_TOOLS_DOCKER_IMAGE}
 .PHONY: default
 default: help
 
-## Run pre-commit hooks in build-tools docker container.
+# Not exposed as a callable target by `make help`, since this is a one-time shot to simplify the development of this module.
+.PHONY: template/adjust
+template/adjust: FILTER = -path ./.git -prune -a -type f -o -type f -not -name Makefile
+template/adjust:
+	@find . $(FILTER) -exec sed -i -e "s,terraform-module-template,$${PWD##*/},g" {} \;
+
+## Run pre-commit hooks inside a build-tools docker container.
 .PHONY: test/pre-commit
 test/pre-commit: DOCKER_FLAGS += ${DOCKER_SSH_FLAGS}
 test/pre-commit:
@@ -55,17 +61,18 @@ test/pre-commit:
 .PHONY: test/unit-tests
 test/unit-tests: DOCKER_FLAGS += ${DOCKER_SSH_FLAGS}
 test/unit-tests: DOCKER_FLAGS += ${DOCKER_AWS_FLAGS}
+test/unit-tests: TEST ?= "TestUnit"
 test/unit-tests:
 	@echo "${YELLOW}[TEST] ${GREEN}Start Running Go Tests in Docker Container.${RESET}"
-	$(call go-test,./test/...)
+	$(call go-test,./test -run $(TEST))
 
 ## Clean up cache and temporary files
 .PHONY: clean
 clean:
 	$(call rm-command,.terraform)
 	$(call rm-command,*.tfplan)
-	$(call rm-command,examples/*/.terraform)
-	$(call rm-command,examples/*/*.tfplan)
+	$(call rm-command,*/*/.terraform)
+	$(call rm-command,*/*/*.tfplan)
 
 ## Display help for all targets
 .PHONY: help
