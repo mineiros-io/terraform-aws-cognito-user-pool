@@ -13,7 +13,7 @@ defined in the [variables.tf] file of this module.
 ```hcl
 module "cognito_user_pool" {
   source  = "mineiros-io/cognito-user-pool/aws"
-  version = "~> 0.5.0"
+  version = "~> 0.6.0"
 
   name = "example-userpool"
 }
@@ -47,10 +47,8 @@ Run `terraform destroy` to destroy all resources again.
 
 <!-- References -->
 
-<!-- markdown-link-check-disable -->
 [main.tf]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/master/examples/user-pool-with-default-settings/main.tf
 [variables.tf]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/master/variables.tf
-<!-- markdown-link-check-enable -->
 
 [homepage]: https://mineiros.io/?ref=terraform-module-template
 
