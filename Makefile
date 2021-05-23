@@ -5,10 +5,13 @@ BUILD_TOOLS_VERSION      ?= v0.11.0
 BUILD_TOOLS_DOCKER_REPO  ?= mineiros/build-tools
 BUILD_TOOLS_DOCKER_IMAGE ?= ${BUILD_TOOLS_DOCKER_REPO}:${BUILD_TOOLS_VERSION}
 
-# If running in CI (e.g. GitHub Actions)
-# https://docs.github.com/en/actions/reference/environment-variables#default-environment-variables
 #
-# To disable TF_IN_AUTOMATION in CI set it to empty
+# Some CI providers such as GitHub Actions, CircleCI, and TravisCI are setting
+# the CI environment variable to a non-empty value by default to indicate that
+# the current workflow is running in a Continuous Integration environment.
+#
+# If TF_IN_AUTOMATION is set to any non-empty value, Terraform adjusts its
+# output to avoid suggesting specific commands to run next.
 # https://www.terraform.io/docs/commands/environment-variables.html#tf_in_automation
 #
 # We are using GNU style quiet commands to disable set V to non-empty e.g. V=1
@@ -28,18 +31,16 @@ ifndef NOCOLOR
 	RESET  := $(shell tput -Txterm sgr0)
 endif
 
-# We are creating docker volumes for /go and /terraform that are unique per
-# repository to reuse dependencies between different docker run commands.
-VOLUME_PREFIX ?= mineiros_build_tools
-VOLUME_SUFFIX ?= $(notdir $(shell git rev-parse --show-toplevel || "build"))
-DOCKER_RUN_FLAGS += -v ${VOLUME_PREFIX}-terraform-${VOLUME_SUFFIX}:/terraform
-DOCKER_RUN_FLAGS += -v ${VOLUME_PREFIX}-go-${VOLUME_SUFFIX}:/go
-DOCKER_RUN_FLAGS += -v ${PWD}:/build
+GIT_TOPLEVEl = $(shell git rev-parse --show-toplevel)
+
+DOCKER_RUN_FLAGS += -v ${GIT_TOPLEVEl}:/build
 DOCKER_RUN_FLAGS += --rm
 DOCKER_RUN_FLAGS += -e TF_IN_AUTOMATION
 
-DOCKER_SSH_FLAGS += -e SSH_AUTH_SOCK=/ssh-agent
-DOCKER_SSH_FLAGS += -v ${SSH_AUTH_SOCK}:/ssh-agent
+ifdef SSH_AUTH_SOCK
+  DOCKER_SSH_FLAGS += -e SSH_AUTH_SOCK=/ssh-agent
+  DOCKER_SSH_FLAGS += -v ${SSH_AUTH_SOCK}:/ssh-agent
+endif
 
 DOCKER_AWS_FLAGS += -e AWS_ACCESS_KEY_ID
 DOCKER_AWS_FLAGS += -e AWS_SECRET_ACCESS_KEY
@@ -76,9 +77,11 @@ test/unit-tests:
 .PHONY: clean
 clean:
 	$(call rm-command,.terraform)
+	$(call rm-command,.terraform.lock.hcl)
 	$(call rm-command,*.tfplan)
 	$(call rm-command,*/*/.terraform)
 	$(call rm-command,*/*/*.tfplan)
+	$(call rm-command,*/*/.terraform.lock.hcl)
 
 ## Display help for all targets
 .PHONY: help
