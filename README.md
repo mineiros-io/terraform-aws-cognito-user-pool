@@ -12,7 +12,7 @@ A [Terraform] module for deploying and managing
 [Cognito User Pools]
 on [Amazon Web Services (AWS)][AWS].
 
-*This module supports Terraform v0.15, v0.14, v0.13 as well as v0.12.20 and above
+*This module supports Terraform v1.x, v0.15, v0.14, v0.13 as well as v0.12.20 and above
 and is compatible with the terraform AWS provider v3.19 and above.*
 
 The last version supporting terraform AWS provider v2.x is v0.4.1.
@@ -589,7 +589,7 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 
 [badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-cognito-user-pool.svg?label=latest&sort=semver
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
-[badge-terraform]: https://img.shields.io/badge/terraform-0.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform
+[badge-terraform]: https://img.shields.io/badge/terraform-1.x%20|%200.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
 
 [build-status]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/actions
