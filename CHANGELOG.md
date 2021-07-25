@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0]
+
 ### Added
 
 - Add support for Terraform `v1.x`
@@ -121,11 +123,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- markdown-link-check-disable -->
 
-[unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.5.1...HEAD
-[0.5.1]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.5.0...v0.5.1
+[unreleased]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.6.0...v0.7.0
 
 <!-- markdown-link-check-enable -->
 
+[0.6.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.4.1...v0.5.0
 [0.4.1]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/compare/v0.3.0...v0.4.0
