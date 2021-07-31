@@ -6,7 +6,7 @@
 [![AWS Provider Version][badge-tf-aws]][releases-aws-provider]
 [![Join Slack][badge-slack]][slack]
 
-# mineiros-io/cognito-user-pool/aws
+# terraform-aws-cognito-user-pool
 
 A [Terraform] module for deploying and managing
 [Cognito User Pools]
