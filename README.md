@@ -355,7 +355,7 @@ for details and use-cases.
 
 - **`email_message_by_link`**: *(Optional `string`)*
 
-  The email message template for sending a confirmation link to the user, it must contain the `{##Click Here##}` placeholder.
+  The email message template for sending a confirmation link to the user, it must contain the `{##Verify Email##}` placeholder.
   Default is `"Please click the link below to verify your email address. {##Verify Email##}."`.
 
 - **`email_subject`**: *(Optional `string`)*
