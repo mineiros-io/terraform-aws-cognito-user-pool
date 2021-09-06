@@ -427,7 +427,7 @@ variable "email_message" {
 
 variable "email_message_by_link" {
   type        = string
-  description = "(Optional) The email message template for sending a confirmation link to the user, it must contain the {##Click Here##} placeholder."
+  description = "(Optional) The email message template for sending a confirmation link to the user, it must contain the {##Any Text##} placeholder."
   default     = "Please click the link below to verify your email address. {##Verify Email##}."
 }
 
