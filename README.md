@@ -456,6 +456,10 @@ for details and use-cases.
   default_client_write_attributes                     = null
   default_client_explicit_auth_flows                  = null
   default_client_prevent_user_existence_errors        = null
+  default_client_access_token_validity                = null
+  default_client_id_token_validity                    = null
+  default_client_token_validity_units                 = null
+  default_client_enable_token_revocation              = null
   ```
 
 - **`default_client_callback_urls`**: *(Optional `list(string)`)*
@@ -509,6 +513,24 @@ for details and use-cases.
 - **`default_client_prevent_user_existence_errors`**: *(Optional `string`)*
 
   Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the Cognito User Pool. When set to `ENABLED` and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to `LEGACY`, those APIs will return a `UserNotFoundException` exception if the user does not exist in the Cognito User Pool.
+
+- **`default_client_access_token_validity`**: *(Optional `number`)*
+
+  Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. 
+  This value will be overridden if you have entered a value in 'default_client_token_validity_units'.
+  
+- **`default_client_id_token_validity`**: *(Optional `number`)*
+
+  Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. 
+  This value will be overridden if you have entered a value in 'default_client_token_validity_units'.
+
+- **`default_client_token_validity_units`**: *(Optional `any`)*
+
+  Configuration block for units in which the validity times are represented in.
+
+- **`default_client_enable_token_revocation`**: *(Optional `bool`)*
+
+  Enables or disables token revocation.
 
 ## Module Attributes Reference
 

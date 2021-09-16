@@ -187,7 +187,7 @@ variable "default_client_token_validity_units" {
 # }
 
 variable "default_client_enable_token_revocation" {
-  description = " (Optional) Enables or disables token revocation."
+  description = "(Optional) Enables or disables token revocation."
   type        = bool
   default     = null
 }
