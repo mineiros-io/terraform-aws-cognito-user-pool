@@ -202,6 +202,10 @@ locals {
       supported_identity_providers         = lookup(client, "supported_identity_providers", var.default_client_supported_identity_providers)
       prevent_user_existence_errors        = lookup(client, "prevent_user_existence_errors", var.default_client_prevent_user_existence_errors)
       write_attributes                     = lookup(client, "write_attributes", var.default_client_write_attributes)
+      access_token_validity                = lookup(client, "access_token_validity", var.default_client_access_token_validity)
+      id_token_validity                    = lookup(client, "id_token_validity", var.default_client_id_token_validity)
+      token_validity_units                 = lookup(client, "token_validity_units", var.default_client_token_validity_units)
+      enable_token_revocation              = lookup(client, "enable_token_revocation", var.default_client_enable_token_revocation)
     }
   }
 }
@@ -225,6 +229,10 @@ resource "aws_cognito_user_pool_client" "client" {
   prevent_user_existence_errors        = each.value.prevent_user_existence_errors
   user_pool_id                         = aws_cognito_user_pool.user_pool[0].id
   write_attributes                     = each.value.write_attributes
+  access_token_validity                = each.value.access_token_validity
+  id_token_validity                    = each.value.id_token_validity
+  token_validity_units                 = each.value.token_validity_units
+  enable_token_revocation              = each.value.enable_token_revocation
 }
 
 resource "aws_cognito_user_pool_domain" "domain" {
