@@ -235,14 +235,13 @@ resource "aws_cognito_user_pool_client" "client" {
   dynamic "token_validity_units" {
     for_each = length(each.value.token_validity_units) > 0 ? [true] : []
     content {
-      refresh_token = lookup(token_validity_units.value, "refresh_token", null)
-      access_token  = lookup(token_validity_units.value, "access_token", null)
-      id_token      = lookup(token_validity_units.value, "id_token", null)
+      refresh_token = each.value.token_validity_units.refresh_token
+      access_token  = each.value.token_validity_units.access_token
+      id_token      = each.value.token_validity_units.id_token
     }
   }
   enable_token_revocation = each.value.enable_token_revocation
 }
-
 resource "aws_cognito_user_pool_domain" "domain" {
   count = var.module_enabled && var.domain != null ? 1 : 0
 
