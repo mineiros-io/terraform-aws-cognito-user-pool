@@ -234,6 +234,7 @@ resource "aws_cognito_user_pool_client" "client" {
 
   dynamic "token_validity_units" {
     for_each = length(each.value.token_validity_units) > 0 ? [true] : []
+
     content {
       refresh_token = each.value.token_validity_units.refresh_token
       access_token  = each.value.token_validity_units.access_token
