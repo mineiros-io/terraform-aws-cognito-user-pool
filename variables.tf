@@ -160,6 +160,38 @@ variable "default_client_write_attributes" {
   default     = null
 }
 
+variable "default_client_access_token_validity" {
+  description = "(Optional) Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. This value will be overridden if you have entered a value in 'default_client_token_validity_units'."
+  type        = number
+  default     = null
+}
+
+variable "default_client_id_token_validity" {
+  description = "(Optional) Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. This value will be overridden if you have entered a value in 'default_client_token_validity_units'."
+  type        = number
+  default     = null
+}
+
+variable "default_client_token_validity_units" {
+  description = "(Optional) Configuration block for units in which the validity times are represented in."
+  type        = any
+  default     = null
+}
+
+# Example:
+#
+# default_client_token_validity_units = {
+#   refresh_token = "days"
+#   access_token  = "minutes"
+#   id_token      = "minutes"
+# }
+
+variable "default_client_enable_token_revocation" {
+  description = "(Optional) Enables or disables token revocation."
+  type        = bool
+  default     = null
+}
+
 variable "invite_email_subject" {
   type        = string
   description = "(Optional) The subject for email messages."
