@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   support for the `enable_token_revocation` in the `aws_cognito_user_pool_client`
   resource.
 
+### Fixed
+
+- Fixed implementation of `token_validity_units` block.
+
 ## [0.8.0]
 
 ### BREAKING
