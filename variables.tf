@@ -45,6 +45,35 @@ variable "allow_admin_create_user_only" {
   default     = true
 }
 
+variable "resource_servers" {
+  description = "(Optional) A list of objects with resource server definitions."
+  type        = any
+
+  # Declare resource servers and associated custom scopes
+  # For details please see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_resource_server
+  #
+  # Example:
+  #
+  # resource_servers = [
+  #   {
+  #     identifier = "https://api.resourceserver.com"
+  #     name       = "API"
+  #     scopes     = [
+  #       {
+  #         scope_name = "users:read"
+  #         scope_description = "Read user data"
+  #       },
+  #       {
+  #         scope_name = "users:write"
+  #         scope_description = "Write user data"
+  #       }
+  #     ]
+  #   }
+  # ]
+
+  default = []
+}
+
 variable "clients" {
   description = "(Optional) A list of objects with the clients definitions."
   type        = any

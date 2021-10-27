@@ -35,6 +35,27 @@ variable "domain" {
   default     = "mineiros-test"
 }
 
+variable "resource_servers" {
+  description = "(Optional) A list of objects with resource server definitions."
+  type        = any
+  default = [
+    {
+      identifier = "https://api.resourceserver.com"
+      name       = "API"
+      scopes = [
+        {
+          scope_name        = "users:read",
+          scope_description = "Read user data"
+        },
+        {
+          scope_name        = "users:write"
+          scope_description = "Write user data"
+        }
+      ]
+    }
+  ]
+}
+
 variable "clients" {
   description = "(Optional) A list of objects with the clients definitions."
   type        = any
@@ -42,7 +63,7 @@ variable "clients" {
     {
       name                 = "android-mobile-client"
       read_attributes      = ["email", "email_verified", "preferred_username"]
-      allowed_oauth_scopes = ["email", "openid"]
+      allowed_oauth_scopes = ["email", "openid", "https://api.resourceserver.com/users:read"]
       allowed_oauth_flows  = ["implicit"]
       callback_urls        = ["https://mineiros.io/callback", "https://mineiros.io/anothercallback"]
       default_redirect_uri = "https://mineiros.io/callback"
