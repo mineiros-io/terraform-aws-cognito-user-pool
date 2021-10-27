@@ -21,4 +21,6 @@ module "cognito_user_pool" {
   domain = var.domain
 
   schema_attributes = var.schema_attributes
+  clients           = var.clients
+  resource_servers  = var.resource_servers
 }

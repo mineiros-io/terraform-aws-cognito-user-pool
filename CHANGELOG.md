@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Implement support for resource servers through the
+  `aws_cognito_resource_server` resource
+
 ## [0.9.0]
 
 ### BREAKING
