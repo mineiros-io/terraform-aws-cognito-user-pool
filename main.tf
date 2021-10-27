@@ -243,6 +243,10 @@ resource "aws_cognito_user_pool_client" "client" {
   }
 
   enable_token_revocation = each.value.enable_token_revocation
+
+  depends_on = [
+    aws_cognito_resource_server.resource_server
+  ]
 }
 
 resource "aws_cognito_user_pool_domain" "domain" {
