@@ -174,17 +174,22 @@ variable "default_client_id_token_validity" {
 
 variable "default_client_token_validity_units" {
   description = "(Optional) Configuration block for units in which the validity times are represented in."
-  type        = any
-  default     = null
-}
+  # type = object({
+  #   refresh_token = optional(string)
+  #   access_token  = optional(string)
+  #   id_token      = optional(string)
+  # })
+  type    = any
+  default = null
 
-# Example:
-#
-# default_client_token_validity_units = {
-#   refresh_token = "days"
-#   access_token  = "minutes"
-#   id_token      = "minutes"
-# }
+  # Example:
+  #
+  # default_client_token_validity_units = {
+  #   refresh_token = "days"
+  #   access_token  = "minutes"
+  #   id_token      = "minutes"
+  # }
+}
 
 variable "default_client_enable_token_revocation" {
   description = "(Optional) Enables or disables token revocation."
@@ -500,17 +505,22 @@ variable "tags" {
 # ------------------------------------------------------------------------------
 # OPTIONAL MODULE CONFIGURATION PARAMETERS
 # These variables are used to configure the module.
-# See https://medium.com/mineiros/the-ultimate-guide-on-how-to-write-terraform-modules-part-1-81f86d31f024
 # ------------------------------------------------------------------------------
 
 variable "module_enabled" {
   type        = bool
-  description = "(Optional) Whether to create resources within the module or not. Default is true."
+  description = "(Optional) Whether to create resources within the module or not."
   default     = true
+}
+
+variable "module_tags" {
+  type        = map(string)
+  description = "(Optional) A map of tags that will be applied to all created resources that accept tags. Tags defined with 'module_tags' can be overwritten by resource-specific tags."
+  default     = {}
 }
 
 variable "module_depends_on" {
   type        = any
-  description = "(Optional) A list of external resources the module depends_on. Default is []."
+  description = "(Optional) A list of external resources the module depends_on."
   default     = []
 }
