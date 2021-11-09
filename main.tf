@@ -182,7 +182,7 @@ resource "aws_cognito_user_pool" "user_pool" {
     sms_message           = var.sms_message
   }
 
-  tags       = var.tags
+  tags       = merge(var.module_tags, var.tags)
   depends_on = [var.module_depends_on]
 }
 

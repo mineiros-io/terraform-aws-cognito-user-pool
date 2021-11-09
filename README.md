@@ -89,15 +89,35 @@ for details and use-cases.
 
 #### Module Configuration
 
-- **`module_enabled`**: *(Optional `bool`)*
+- **`module_enabled`**: _(Optional `bool`)_
 
   Specifies whether resources in the module will be created.
   Default is `true`.
 
-- **`module_depends_on`**: *(Optional `list(any)`)*
+- **`module_tags`**: _(Optional `map(string)`)_
 
-  A list of dependencies. Any object can be _assigned_ to this list to define a
-  hidden external dependency. Default is `[]`.
+  A map of tags that will be applied to all created resources that accept tags. Tags defined with 'module_tags' can be
+  overwritten by resource-specific tags.
+  Default is `{}`.
+
+  Example:
+  ```hcl
+  module_tags = {
+    environment = "staging"
+    team        = "platform"
+  }
+  ```
+
+- **`module_depends_on`**: _(Optional `list(dependencies)`)_
+
+  A list of dependencies. Any object can be _assigned_ to this list to define a hidden external dependency.
+
+  Example:
+  ```hcl
+  module_depends_on = [
+    aws_vpc.vpc
+  ]
+  ```
 
 #### Cognito User Pool
 

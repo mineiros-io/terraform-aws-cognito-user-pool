@@ -12,7 +12,7 @@ of the modules that ship with this repository.
 ## Introduction
 
 We are using [Terratest] for automated tests that are located in the
-[`test/` directory][Testdirectory]. Terratest deploys _real_ infrastructure
+[`test/` directory][testdirectory]. Terratest deploys _real_ infrastructure
 (e.g., servers) in a _real_ environment (e.g., AWS).
 
 The basic usage pattern for writing automated tests with Terratest is to:
@@ -58,25 +58,27 @@ Alternatively, you can also run the tests without Docker.
 3. Set your AWS credentials as environment variables: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
 4. Install go dependencies: `go mod download`
 5. Run all tests: `go test -v -count 1 -timeout 45m -parallel 128 ./test/...`
+   or use the convenient `make test/unit-tests` Makefile target.
 6. Run a specific test: `go test -count 1 -v -timeout 45m -parallel 128 test/example_test.go`
 
 <!-- References -->
 
 <!-- markdown-link-check-disable -->
-[Makefile]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/Makefile
-[Testdirectory]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/master/test
+
+[makefile]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/main/Makefile
+[testdirectory]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/main/test
+
 <!-- markdown-link-check-enable -->
 
 [homepage]: https://mineiros.io/?ref=terraform-aws-cognito-user-pool
-[Terratest]: https://github.com/gruntwork-io/terratest
+[terratest]: https://github.com/gruntwork-io/terratest
 [package testing]: https://golang.org/pkg/testing/
-[Docker]: https://docs.docker.com/get-started/
-[Go]: https://golang.org/
-[Terraform]: https://www.terraform.io/downloads.html
+[docker]: https://docs.docker.com/get-started/
+[go]: https://golang.org/
+[terraform]: https://www.terraform.io/downloads.html
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
 [badge-terraform]: https://img.shields.io/badge/terraform-1.x%20|%200.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
-
 [releases-terraform]: https://github.com/hashicorp/terraform/releases
 [apache20]: https://opensource.org/licenses/Apache-2.0
-[slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
+[slack]: https://mineiros.io/slack
