@@ -55,10 +55,10 @@ pre-configured.
   Create a Cognito User Pool with pre-configured best practices.
   Create Cognito User Pool Clients.
   Create a Cognito User Pool Domain.
+  Create Cognito User Pool Resource Servers as associated scopes.
 
 - *Features not yet implemented*:
   [`cognito_user_group`](https://www.terraform.io/docs/providers/aws/r/cognito_user_group.html)
-  [`cognito_resource_server`](https://www.terraform.io/docs/providers/aws/r/cognito_resource_server.html)
 
 ## Getting Started
 
@@ -424,6 +424,36 @@ for details and use-cases.
   The ARN of an ISSUED ACM certificate in us-east-1 for a custom domain.
   Default is not to use a custom domain.
 
+#### Cognito User Pool Resource Servers
+
+- **`resource_servers`**: *(Optional `list(resource_server)`)
+
+  A list of objects with resource server declarations.
+  Default is []
+
+  **Example:**
+
+  A resource server declaration with scopes. For details see the [Terraform AWS Cognito Resource Server Docs]
+
+  ```hcl
+  resource_servers = [
+    {
+      identifier = "https://api.resourceserver.com"
+      name       = "API"
+      scopes     = [
+        {
+          scope_name = "users:read"
+          scope_description = "Read user data"
+        },
+        {
+          scope_name = "users:write"
+          scope_description = "Write user data"
+        }
+      ]
+    }
+  ]
+  ```
+
 #### Cognito User Pool Clients
 
 - **`clients`**: *(Optional `list(client)`)*
@@ -660,3 +690,4 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 [Cognito User Pools]: https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html
 [attributes docs]: https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html
 [Terraform AWS Cognito User Pool Client Docs]: https://www.terraform.io/docs/providers/aws/r/cognito_user_pool_client.html
+[Terraform AWS Cognito Resource Server Docs]: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_resource_server

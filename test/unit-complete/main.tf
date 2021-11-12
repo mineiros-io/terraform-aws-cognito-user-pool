@@ -45,6 +45,23 @@ module "test" {
     }
   ]
 
+  resource_servers = [
+    {
+      identifier = "https://api.resourceserver.com"
+      name       = "API"
+      scopes = [
+        {
+          scope_name        = "users:read",
+          scope_description = "Read user data"
+        },
+        {
+          scope_name        = "users:write"
+          scope_description = "Write user data"
+        }
+      ]
+    }
+  ]
+
   # add most/all other optional arguments
 
   enable_username_case_sensitivity = false
