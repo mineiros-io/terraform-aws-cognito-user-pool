@@ -163,13 +163,13 @@ Default is to use `alias_attributes`.
 
   The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 
-  Default is `"Your username is { username } and your temporary password is ' {####}'"`.
+  Default is `"Your username is {username} and your temporary password is ' {####}'"`.
 
 - [**`invite_sms_message`**](#var-invite_sms_message): *(Optional `string`)*<a name="var-invite_sms_message"></a>
 
   The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
 
-  Default is `"Your username is { username } and your temporary password is ' {####}'."`.
+  Default is `"Your username is {username} and your temporary password is ' {####}'."`.
 
 - [**`auto_verified_attributes`**](#var-auto_verified_attributes): *(Optional `set(string)`)*<a name="var-auto_verified_attributes"></a>
 
@@ -410,7 +410,7 @@ For details please see the [attributes docs].
 
   The email message template for sending a confirmation link to the user, it must contain the `{##Any Text##}` placeholder.
 
-  Default is `"Please click the link below to verify your email address.{ ##Verify Email##}."`.
+  Default is `"Please click the link below to verify your email address.{##Verify Email##}."`.
 
 - [**`email_subject`**](#var-email_subject): *(Optional `string`)*<a name="var-email_subject"></a>
 
