@@ -372,11 +372,11 @@ For details please see the [attributes docs].
 
   The object accepts the following attributes:
 
-  - [**`name`**](#attr-name-1): *(**Required** `string`)*<a name="attr-name-1"></a>
+  - [**`name`**](#attr-name-account_recovery_mechanisms): *(**Required** `string`)*<a name="attr-name-account_recovery_mechanisms"></a>
 
     Recovery method for a user. Can be of the following: verified_email, verified_phone_number, and admin_only.
 
-  - [**`priority`**](#attr-priority-1): *(**Required** `string`)*<a name="attr-priority-1"></a>
+  - [**`priority`**](#attr-priority-account_recovery_mechanisms): *(**Required** `string`)*<a name="attr-priority-account_recovery_mechanisms"></a>
 
     Positive integer specifying priority of a method with 1 being the highest priority.
 
@@ -386,11 +386,11 @@ For details please see the [attributes docs].
 
   The object accepts the following attributes:
 
-  - [**`external_id`**](#attr-external_id-1): *(**Required** `string`)*<a name="attr-external_id-1"></a>
+  - [**`external_id`**](#attr-external_id-sms_configuration): *(**Required** `string`)*<a name="attr-external_id-sms_configuration"></a>
 
     External ID used in IAM role trust relationships.
 
-  - [**`sns_caller_arn`**](#attr-sns_caller_arn-1): *(**Required** `string`)*<a name="attr-sns_caller_arn-1"></a>
+  - [**`sns_caller_arn`**](#attr-sns_caller_arn-sms_configuration): *(**Required** `string`)*<a name="attr-sns_caller_arn-sms_configuration"></a>
 
     ARN of the Amazon SNS caller. This is usually the IAM role that you've given Cognito permission to assume.
 
@@ -491,25 +491,25 @@ For details please see the [attributes docs].
 
   The object accepts the following attributes:
 
-  - [**`identifier`**](#attr-identifier-1): *(**Required** `string`)*<a name="attr-identifier-1"></a>
+  - [**`identifier`**](#attr-identifier-resource_servers): *(**Required** `string`)*<a name="attr-identifier-resource_servers"></a>
 
     An identifier for the resource server.
 
-  - [**`name`**](#attr-name-1): *(**Required** `string`)*<a name="attr-name-1"></a>
+  - [**`name`**](#attr-name-resource_servers): *(**Required** `string`)*<a name="attr-name-resource_servers"></a>
 
     A name for the resource server.
 
-  - [**`scope`**](#attr-scope-1): *(Optional `list(scope)`)*<a name="attr-scope-1"></a>
+  - [**`scope`**](#attr-scope-resource_servers): *(Optional `list(scope)`)*<a name="attr-scope-resource_servers"></a>
 
     A list of Authorization Scope.
 
     The object accepts the following attributes:
 
-    - [**`scope_name`**](#attr-scope_name-2): *(**Required** `string`)*<a name="attr-scope_name-2"></a>
+    - [**`scope_name`**](#attr-scope_name-scope-resource_servers): *(**Required** `string`)*<a name="attr-scope_name-scope-resource_servers"></a>
 
       The scope name.
 
-    - [**`scope_description`**](#attr-scope_description-2): *(**Required** `string`)*<a name="attr-scope_description-2"></a>
+    - [**`scope_description`**](#attr-scope_description-scope-resource_servers): *(**Required** `string`)*<a name="attr-scope_description-scope-resource_servers"></a>
 
       The scope description.
 
@@ -539,125 +539,125 @@ For details please see the [attributes docs].
 
   The object accepts the following attributes:
 
-  - [**`name`**](#attr-name-1): *(**Required** `string`)*<a name="attr-name-1"></a>
+  - [**`name`**](#attr-name-clients): *(**Required** `string`)*<a name="attr-name-clients"></a>
 
     Name of the application client.
 
-  - [**`user_pool_id`**](#attr-user_pool_id-1): *(Optional `string`)*<a name="attr-user_pool_id-1"></a>
+  - [**`user_pool_id`**](#attr-user_pool_id-clients): *(Optional `string`)*<a name="attr-user_pool_id-clients"></a>
 
     Name of the application client.
 
-  - [**`access_token_validity`**](#attr-access_token_validity-1): *(Optional `number`)*<a name="attr-access_token_validity-1"></a>
+  - [**`access_token_validity`**](#attr-access_token_validity-clients): *(Optional `number`)*<a name="attr-access_token_validity-clients"></a>
 
     Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. This value will be overridden if you have entered a value in token_validity_units.
 
-  - [**`allowed_oauth_flows_user_pool_client`**](#attr-allowed_oauth_flows_user_pool_client-1): *(Optional `bool`)*<a name="attr-allowed_oauth_flows_user_pool_client-1"></a>
+  - [**`allowed_oauth_flows_user_pool_client`**](#attr-allowed_oauth_flows_user_pool_client-clients): *(Optional `bool`)*<a name="attr-allowed_oauth_flows_user_pool_client-clients"></a>
 
     Whether the client is allowed to follow the OAuth protocol when interacting with Cognito user pools.
 
-  - [**`allowed_oauth_flows`**](#attr-allowed_oauth_flows-1): *(Optional `set(string)`)*<a name="attr-allowed_oauth_flows-1"></a>
+  - [**`allowed_oauth_flows`**](#attr-allowed_oauth_flows-clients): *(Optional `set(string)`)*<a name="attr-allowed_oauth_flows-clients"></a>
 
     List of allowed OAuth flows (code, implicit, client_credentials).
 
-  - [**`allowed_oauth_scopes`**](#attr-allowed_oauth_scopes-1): *(Optional `set(string)`)*<a name="attr-allowed_oauth_scopes-1"></a>
+  - [**`allowed_oauth_scopes`**](#attr-allowed_oauth_scopes-clients): *(Optional `set(string)`)*<a name="attr-allowed_oauth_scopes-clients"></a>
 
     List of allowed OAuth scopes (phone, email, openid, profile, and aws.cognito.signin.user.admin).
 
-  - [**`analytics_configuration`**](#attr-analytics_configuration-1): *(Optional `object(analytics_configuration)`)*<a name="attr-analytics_configuration-1"></a>
+  - [**`analytics_configuration`**](#attr-analytics_configuration-clients): *(Optional `object(analytics_configuration)`)*<a name="attr-analytics_configuration-clients"></a>
 
     Configuration block for Amazon Pinpoint analytics for collecting metrics for this user pool.
 
     The object accepts the following attributes:
 
-    - [**`application_arn`**](#attr-application_arn-2): *(Optional `string`)*<a name="attr-application_arn-2"></a>
+    - [**`application_arn`**](#attr-application_arn-analytics_configuration-clients): *(Optional `string`)*<a name="attr-application_arn-analytics_configuration-clients"></a>
 
       Application ARN for an Amazon Pinpoint application. Conflicts with external_id and role_arn.
 
-    - [**`application_id`**](#attr-application_id-2): *(Optional `string`)*<a name="attr-application_id-2"></a>
+    - [**`application_id`**](#attr-application_id-analytics_configuration-clients): *(Optional `string`)*<a name="attr-application_id-analytics_configuration-clients"></a>
 
       Application ID for an Amazon Pinpoint application.
 
-    - [**`external_id`**](#attr-external_id-2): *(Optional `string`)*<a name="attr-external_id-2"></a>
+    - [**`external_id`**](#attr-external_id-analytics_configuration-clients): *(Optional `string`)*<a name="attr-external_id-analytics_configuration-clients"></a>
 
       ID for the Analytics Configuration. Conflicts with application_arn. Application ID for an Amazon Pinpoint application.
 
-    - [**`role_arn`**](#attr-role_arn-2): *(Optional `string`)*<a name="attr-role_arn-2"></a>
+    - [**`role_arn`**](#attr-role_arn-analytics_configuration-clients): *(Optional `string`)*<a name="attr-role_arn-analytics_configuration-clients"></a>
 
       ARN of an IAM role that authorizes Amazon Cognito to publish events to Amazon Pinpoint analytics. Conflicts with application_arn.
 
-    - [**`user_data_shared`**](#attr-user_data_shared-2): *(Optional `bool`)*<a name="attr-user_data_shared-2"></a>
+    - [**`user_data_shared`**](#attr-user_data_shared-analytics_configuration-clients): *(Optional `bool`)*<a name="attr-user_data_shared-analytics_configuration-clients"></a>
 
       If set to true, Amazon Cognito will include user data in the events it publishes to Amazon Pinpoint analytics.
 
-  - [**`callback_urls`**](#attr-callback_urls-1): *(Optional `set(string)`)*<a name="attr-callback_urls-1"></a>
+  - [**`callback_urls`**](#attr-callback_urls-clients): *(Optional `set(string)`)*<a name="attr-callback_urls-clients"></a>
 
     List of allowed callback URLs for the identity providers.
 
-  - [**`default_redirect_uri`**](#attr-default_redirect_uri-1): *(Optional `string`)*<a name="attr-default_redirect_uri-1"></a>
+  - [**`default_redirect_uri`**](#attr-default_redirect_uri-clients): *(Optional `string`)*<a name="attr-default_redirect_uri-clients"></a>
 
     Default redirect URI. Must be in the list of callback URLs.
 
-  - [**`enable_token_revocation`**](#attr-enable_token_revocation-1): *(Optional `bool`)*<a name="attr-enable_token_revocation-1"></a>
+  - [**`enable_token_revocation`**](#attr-enable_token_revocation-clients): *(Optional `bool`)*<a name="attr-enable_token_revocation-clients"></a>
 
     Enables or disables token revocation.
 
-  - [**`explicit_auth_flows`**](#attr-explicit_auth_flows-1): *(Optional `set(string)`)*<a name="attr-explicit_auth_flows-1"></a>
+  - [**`explicit_auth_flows`**](#attr-explicit_auth_flows-clients): *(Optional `set(string)`)*<a name="attr-explicit_auth_flows-clients"></a>
 
     List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH, ALLOW_ADMIN_USER_PASSWORD_AUTH, ALLOW_CUSTOM_AUTH, ALLOW_USER_PASSWORD_AUTH, ALLOW_USER_SRP_AUTH, ALLOW_REFRESH_TOKEN_AUTH).
 
-  - [**`generate_secret`**](#attr-generate_secret-1): *(Optional `bool`)*<a name="attr-generate_secret-1"></a>
+  - [**`generate_secret`**](#attr-generate_secret-clients): *(Optional `bool`)*<a name="attr-generate_secret-clients"></a>
 
     Should an application secret be generated.
 
-  - [**`id_token_validity`**](#attr-id_token_validity-1): *(Optional `number`)*<a name="attr-id_token_validity-1"></a>
+  - [**`id_token_validity`**](#attr-id_token_validity-clients): *(Optional `number`)*<a name="attr-id_token_validity-clients"></a>
 
     Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. This value will be overridden if you have entered a value in token_validity_units.
 
-  - [**`logout_urls`**](#attr-logout_urls-1): *(Optional `set(string)`)*<a name="attr-logout_urls-1"></a>
+  - [**`logout_urls`**](#attr-logout_urls-clients): *(Optional `set(string)`)*<a name="attr-logout_urls-clients"></a>
 
     List of allowed logout URLs for the identity providers.
 
-  - [**`prevent_user_existence_errors`**](#attr-prevent_user_existence_errors-1): *(Optional `string`)*<a name="attr-prevent_user_existence_errors-1"></a>
+  - [**`prevent_user_existence_errors`**](#attr-prevent_user_existence_errors-clients): *(Optional `string`)*<a name="attr-prevent_user_existence_errors-clients"></a>
 
     Choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to ENABLED and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to LEGACY, those APIs will return a UserNotFoundException exception if the user does not exist in the user pool.
 
-  - [**`read_attributes`**](#attr-read_attributes-1): *(Optional `set(string)`)*<a name="attr-read_attributes-1"></a>
+  - [**`read_attributes`**](#attr-read_attributes-clients): *(Optional `set(string)`)*<a name="attr-read_attributes-clients"></a>
 
     List of user pool attributes the application client can read from.
 
-  - [**`refresh_token_validity`**](#attr-refresh_token_validity-1): *(Optional `number`)*<a name="attr-refresh_token_validity-1"></a>
+  - [**`refresh_token_validity`**](#attr-refresh_token_validity-clients): *(Optional `number`)*<a name="attr-refresh_token_validity-clients"></a>
 
     Time limit in days refresh tokens are valid for.
 
-  - [**`supported_identity_providers`**](#attr-supported_identity_providers-1): *(Optional `set(string)`)*<a name="attr-supported_identity_providers-1"></a>
+  - [**`supported_identity_providers`**](#attr-supported_identity_providers-clients): *(Optional `set(string)`)*<a name="attr-supported_identity_providers-clients"></a>
 
     List of provider names for the identity providers that are supported on this client. Uses the provider_name attribute of aws_cognito_identity_provider resource(s), or the equivalent string(s).
 
-  - [**`token_validity_units`**](#attr-token_validity_units-1): *(Optional `object(token_validity_units)`)*<a name="attr-token_validity_units-1"></a>
+  - [**`token_validity_units`**](#attr-token_validity_units-clients): *(Optional `object(token_validity_units)`)*<a name="attr-token_validity_units-clients"></a>
 
     Configuration block for units in which the validity times are represented in.
 
     The object accepts the following attributes:
 
-    - [**`access_token`**](#attr-access_token-2): *(Optional `string`)*<a name="attr-access_token-2"></a>
+    - [**`access_token`**](#attr-access_token-token_validity_units-clients): *(Optional `string`)*<a name="attr-access_token-token_validity_units-clients"></a>
 
       Time unit in for the value in access_token_validity, defaults to hours.
 
       Default is `"hours"`.
 
-    - [**`id_token`**](#attr-id_token-2): *(Optional `string`)*<a name="attr-id_token-2"></a>
+    - [**`id_token`**](#attr-id_token-token_validity_units-clients): *(Optional `string`)*<a name="attr-id_token-token_validity_units-clients"></a>
 
       Time unit in for the value in id_token_validity, defaults to hours.
 
       Default is `"hours"`.
 
-    - [**`refresh_token`**](#attr-refresh_token-2): *(Optional `string`)*<a name="attr-refresh_token-2"></a>
+    - [**`refresh_token`**](#attr-refresh_token-token_validity_units-clients): *(Optional `string`)*<a name="attr-refresh_token-token_validity_units-clients"></a>
 
       Time unit in for the value in refresh_token_validity, defaults to days.
 
       Default is `"days"`.
 
-  - [**`write_attributes`**](#attr-write_attributes-1): *(Optional `set(string)`)*<a name="attr-write_attributes-1"></a>
+  - [**`write_attributes`**](#attr-write_attributes-clients): *(Optional `set(string)`)*<a name="attr-write_attributes-clients"></a>
 
     List of user pool attributes the application client can write to.
 
