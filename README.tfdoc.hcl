@@ -198,7 +198,7 @@ section {
 
         variable "invite_email_message" {
           type        = string
-          default     = "Your username is { username } and your temporary password is ' {####}'"
+          default     = "Your username is {username} and your temporary password is ' {####}'"
           description = <<-END
             The message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
           END
@@ -206,7 +206,7 @@ section {
 
         variable "invite_sms_message" {
           type        = string
-          default     = "Your username is { username } and your temporary password is ' {####}'."
+          default     = "Your username is {username} and your temporary password is ' {####}'."
           description = <<-END
             The message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
           END
@@ -533,7 +533,7 @@ section {
 
         variable "email_message_by_link" {
           type        = string
-          default     = "Please click the link below to verify your email address.{ ##Verify Email##}."
+          default     = "Please click the link below to verify your email address.{##Verify Email##}."
           description = <<-END
             The email message template for sending a confirmation link to the user, it must contain the `{##Any Text##}` placeholder.
           END
