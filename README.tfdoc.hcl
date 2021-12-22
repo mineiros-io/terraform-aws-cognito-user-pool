@@ -3,7 +3,7 @@ header {
   url   = "https://mineiros.io/?ref=terraform-aws-cognito-user-pool"
 
   badge "build" {
-    image = "https://github.com/mineiros-io/terraform-aws-cognito-user-pool/workflows/Tests/badge.svg"
+    image = "https://github.com/mineiros-io/terraform-aws-cognito-user-pool/workflows/CI/CD%20Pipeline/badge.svg"
     url   = "https://github.com/mineiros-io/terraform-aws-cognito-user-pool/actions"
     text  = "Build Status"
   }
