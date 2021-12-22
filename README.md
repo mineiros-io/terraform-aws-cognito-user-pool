@@ -13,9 +13,9 @@ A [Terraform] module for deploying and managing
 on [Amazon Web Services (AWS)][AWS].
 
 *This module supports Terraform v1.x, v0.15, v0.14, v0.13 as well as v0.12.20 and above
-and is compatible with the terraform AWS provider v3.19 and above.*
+and is compatible with the Terraform AWS provider v3.19 and above.*
 
-The last version supporting terraform AWS provider v2.x is v0.4.1.
+The last version supporting Terraform AWS provider v2.x is v0.4.1.
 
 
 - [Module Features](#module-features)
