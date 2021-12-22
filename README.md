@@ -450,11 +450,10 @@ For details please see the [attributes docs].
 - [**`domain`**](#var-domain): *(Optional `string`)*<a name="var-domain"></a>
 
   The domain name that should be used. Can be set to a FQDN or prefix.
-  If no FQDN and `certificate_arn` are set, the domain prefix will be used for
-  the sign-up and sign-in pages that are hosted by Amazon Cognito,
-  e.g. `https://{YOUR_PREFIX}.auth.eu-west-1.amazoncognito.com`.
-  The prefix must be unique across the selected AWS Region.
-  Domain names can only contain lower-case letters, numbers, and hyphens.
+If no FQDN and `certificate_arn` are set, the domain prefix will be used for the sign-up and sign-in pages that are hosted by Amazon Cognito,
+e.g. `https://{YOUR_PREFIX}.auth.eu-west-1.amazoncognito.com`.
+The prefix must be unique across the selected AWS Region.
+Domain names can only contain lower-case letters, numbers, and hyphens.
 
 - [**`certificate_arn`**](#var-certificate_arn): *(Optional `string`)*<a name="var-certificate_arn"></a>
 
@@ -769,10 +768,10 @@ This value will be overridden if you have entered a value in 'default_client_tok
 The following attributes are exported by the module:
 
 - **`user_pool`**: The `cognito_user_pool` object.
--**`domain`**: The full `aws_cognito_user_pool` object.
+- **`domain`**: The full `aws_cognito_user_pool` object.
 - **`clients`**: A map of `cognito_user_pool_client` objects. The map is keyed by the `name` of the created clients. Client secrets are filtered out of this map and are available through the `client_secrets` output variable and flagged as sensitive.
 - **`client_secrets`**: A sensitive map of client secrets for all created `cognito_user_pool_client` resources. The map is keyed by the `name` of the created clients.
--**module_enabled**: Whether the module is enabled.
+- **module_enabled**: Whether the module is enabled.
 
 ## External Documentation
 
