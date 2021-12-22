@@ -45,8 +45,6 @@ section {
     and is compatible with the terraform AWS provider v3.19 and above.*
 
     The last version supporting terraform AWS provider v2.x is v0.4.1.
-
-    **We, [Mineiros][mineiros-library], offer [professional support][mineiros-pricing] for this module.**
   END
 
   section {
