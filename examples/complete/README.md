@@ -142,7 +142,7 @@ Run `terraform destroy` to destroy all resources again.
 
 [main.tf]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/master/examples/complete/main.tf
 
-[homepage]: https://mineiros.io/?ref=terraform-module-template
+[homepage]: https://mineiros.io/?ref=terraform-aws-cognito-user-pool
 
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
 [badge-terraform]: https://img.shields.io/badge/terraform-1.x%20|%200.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform

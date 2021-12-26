@@ -430,7 +430,7 @@ variable "lambda_verify_auth_challenge_response" {
 }
 
 variable "schema_attributes" {
-  description = "(Optional) A list of schema attributes of a user pool. You can add a maximum um 25 custom attributes."
+  description = "(Optional) A list of schema attributes of a user pool. You can add a maximum of 25 custom attributes."
   type        = any
 
   # Example:

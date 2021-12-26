@@ -8,4 +8,3 @@ repos:
       - id: tflint
       - id: golangci-lint
       - id: phony-targets
-      - id: markdown-link-check
