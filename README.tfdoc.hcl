@@ -131,8 +131,7 @@ section {
         }
 
         variable "module_depends_on" {
-          type           = any
-          readme_type    = "list(dependencies)"
+          type           = list(dependency)
           description    = <<-END
             A list of dependencies. Any object can be _assigned_ to this list to define a hidden external dependency.
           END
@@ -415,7 +414,7 @@ section {
         }
 
         variable "schema_attributes" {
-          type           = any
+          type           = list(schema_attribute)
           default        = []
           description    = <<-END
             A list of schema attributes of a user pool. You can add a maximum of 25 custom attributes. Please note that only default attributes can be marked as required.
@@ -454,7 +453,7 @@ section {
         }
 
         variable "account_recovery_mechanisms" {
-          type           = any
+          type           = list(account_recovery_mechanism)
           default        = []
           description    = <<-END
             A list of recovery_mechanisms to be inserted inside `account_recovery_setting`.
@@ -490,8 +489,7 @@ section {
         }
 
         variable "sms_configuration" {
-          type        = any
-          readme_type = "object(sms_configuration)"
+          type        = object(sms_configuration)
           description = <<-END
             The `sms_configuration` with the `external_id` parameter used in IAM role trust relationships and the `sns_caller_arn` parameter to set the ARN of the Amazon SNS caller. This is usually the IAM role that you have given AWS Cognito permission to assume.
           END
@@ -602,9 +600,8 @@ section {
         title = "Cognito User Pool Resource Servers"
 
         variable "resource_servers" {
-          type           = any
+          type           = list(resource_server)
           default        = []
-          readme_type    = "list(resource_server)"
           description    = <<-END
             A list of objects with resource server declarations.
           END
@@ -644,8 +641,7 @@ section {
           }
 
           attribute "scope" {
-            type        = any
-            readme_type = "list(scope)"
+            type        = list(scope)
             description = <<-END
               A list of Authorization Scope.
             END
@@ -673,8 +669,7 @@ section {
         title = "Cognito User Pool Clients"
 
         variable "clients" {
-          type           = any
-          readme_type    = "list(client)"
+          type           = list(client)
           default        = []
           description    = <<-END
             A list of objects with the clients definitions.
@@ -737,8 +732,7 @@ section {
           }
 
           attribute "analytics_configuration" {
-            type        = any
-            readme_type = "object(analytics_configuration)"
+            type        = object(analytics_configuration)
             description = <<-END
               Configuration block for Amazon Pinpoint analytics for collecting metrics for this user pool.
             END
@@ -857,8 +851,7 @@ section {
           }
 
           attribute "token_validity_units" {
-            type        = any
-            readme_type = "object(token_validity_units)"
+            type        = object(token_validity_units)
             description = <<-END
               Configuration block for units in which the validity times are represented in.
             END
@@ -1059,13 +1052,47 @@ section {
     title   = "Module Outputs"
     content = <<-END
       The following attributes are exported by the module:
-
-      - **`user_pool`**: The `cognito_user_pool` object.
-      - **`domain`**: The full `aws_cognito_user_pool` object.
-      - **`clients`**: A map of `cognito_user_pool_client` objects. The map is keyed by the `name` of the created clients. Client secrets are filtered out of this map and are available through the `client_secrets` output variable and flagged as sensitive.
-      - **`client_secrets`**: A sensitive map of client secrets for all created `cognito_user_pool_client` resources. The map is keyed by the `name` of the created clients.
-      - **module_enabled**: Whether the module is enabled.
     END
+
+    output "user_pool" {
+      type        = object(user_pool)
+      description = <<-END
+        The `cognito_user_pool` object.
+      END
+    }
+
+    output "domain" {
+      type        = object(domain)
+      description = <<-END
+        The full `aws_cognito_user_pool` object.
+      END
+    }
+
+    output "clients" {
+      type        = map(client)
+      description = <<-END
+        A map of `cognito_user_pool_client` objects. The map is keyed by the
+        `name` of the created clients. Client secrets are filtered out of this
+        map and are available through the `client_secrets` output variable and
+        flagged as sensitive.
+      END
+    }
+
+    output "client_secrets" {
+      type        = map(client_secret)
+      description = <<-END
+        A sensitive map of client secrets for all created
+        `cognito_user_pool_client` resources. The map is keyed by the `name` of
+        the created clients.
+      END
+    }
+
+    output "module_enabled" {
+      type        = bool
+      description = <<-END
+        Whether this module is enabled.
+      END
+    }
   }
 
   section {
