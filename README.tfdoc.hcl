@@ -21,7 +21,7 @@ header {
   }
 
   badge "tf-aws-provider" {
-    image = "https://img.shields.io/badge/AWS-3.19+-F8991D.svg?logo=terraform"
+    image = "https://img.shields.io/badge/AWS-3.50+-F8991D.svg?logo=terraform"
     url   = "https://github.com/terraform-providers/terraform-provider-aws/releases"
     text  = "AWS Provider Version"
   }
@@ -42,9 +42,7 @@ section {
     on [Amazon Web Services (AWS)][AWS].
 
     *This module supports Terraform v1.x, v0.15, v0.14, v0.13 as well as v0.12.20 and above
-    and is compatible with the Terraform AWS provider v3.19 and above.*
-
-    The last version supporting Terraform AWS provider v2.x is v0.4.1.
+    and is compatible with the Terraform AWS provider v3.50 and above.
   END
 
   section {
