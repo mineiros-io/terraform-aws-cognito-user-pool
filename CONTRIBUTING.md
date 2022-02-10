@@ -77,11 +77,8 @@ If everything looks good, they will merge the code and release a new version whi
 
 <!-- References -->
 
-<!-- markdown-link-check-disable -->
 [Pull Requests]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/pulls
 [pre-commit-file]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/.pre-commit-config.yaml
-<!-- markdown-link-check-enable -->
-
 [Github Flow]: https://guides.github.com/introduction/flow/
 [CODEOWNERS]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
 [Fork]: https://help.github.com/en/github/getting-started-with-github/fork-a-repo
