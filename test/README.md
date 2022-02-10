@@ -63,13 +63,8 @@ Alternatively, you can also run the tests without Docker.
 
 <!-- References -->
 
-<!-- markdown-link-check-disable -->
-
 [makefile]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/main/Makefile
 [testdirectory]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/tree/main/test
-
-<!-- markdown-link-check-enable -->
-
 [homepage]: https://mineiros.io/?ref=terraform-aws-cognito-user-pool
 [terratest]: https://github.com/gruntwork-io/terratest
 [package testing]: https://golang.org/pkg/testing/

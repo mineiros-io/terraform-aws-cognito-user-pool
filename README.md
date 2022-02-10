@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/workflows/CI/CD%20Pipeline/badge.svg)](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/actions)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-aws-cognito-user-pool.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-aws-cognito-user-pool/releases)
 [![Terraform Version](https://img.shields.io/badge/terraform-1.x%20|%200.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform)](https://github.com/hashicorp/terraform/releases)
-[![AWS Provider Version](https://img.shields.io/badge/AWS-3.19+-F8991D.svg?logo=terraform)](https://github.com/terraform-providers/terraform-provider-aws/releases)
+[![AWS Provider Version](https://img.shields.io/badge/AWS-3.50+-F8991D.svg?logo=terraform)](https://github.com/terraform-providers/terraform-provider-aws/releases)
 [![Join Slack](https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack)](https://mineiros.io/slack)
 
 # terraform-aws-cognito-user-pool
@@ -13,9 +13,7 @@ A [Terraform] module for deploying and managing
 on [Amazon Web Services (AWS)][AWS].
 
 *This module supports Terraform v1.x, v0.15, v0.14, v0.13 as well as v0.12.20 and above
-and is compatible with the Terraform AWS provider v3.19 and above.*
-
-The last version supporting Terraform AWS provider v2.x is v0.4.1.
+and is compatible with the Terraform AWS provider v3.50 and above.
 
 
 - [Module Features](#module-features)
