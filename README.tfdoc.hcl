@@ -77,8 +77,7 @@ section {
 
       ```hcl
       module "terraform-aws-cognito-user-pool" {
-        source  = "mineiros-io/cognito-user-pool/aws"
-        version = "~> 0.9.0"
+        source  = "git@github.com:mineiros-io/terraform-aws-cognito-user-pool.git?ref=v0.9.2"
 
         name = "application-userpool"
       }
