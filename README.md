@@ -66,7 +66,8 @@ Most basic usage just setting required arguments:
 
 ```hcl
 module "terraform-aws-cognito-user-pool" {
-  source  = "git@github.com:mineiros-io/terraform-aws-cognito-user-pool.git?ref=v0.9.2"
+  source  = "mineiros-io/cognito-user-pool/aws"
+  version = "~> 0.9.2"
 
   name = "application-userpool"
 }
