@@ -1,7 +1,7 @@
 # Set default shell to bash
 SHELL := /bin/bash -o pipefail
 
-BUILD_TOOLS_VERSION      ?= v0.14.3
+BUILD_TOOLS_VERSION      ?= v0.15.1
 BUILD_TOOLS_DOCKER_REPO  ?= mineiros/build-tools
 BUILD_TOOLS_DOCKER_IMAGE ?= ${BUILD_TOOLS_DOCKER_REPO}:${BUILD_TOOLS_VERSION}
 
@@ -105,7 +105,7 @@ test/unit-tests:
 ## Generate README.md with Terradoc
 .PHONY: terradoc
 terradoc:
-	$(call quiet-command,terradoc -o README.md README.tfdoc.hcl)
+	$(call quiet-command,terradoc generate -o README.md README.tfdoc.hcl)
 
 ## Clean up cache and temporary files
 .PHONY: clean
