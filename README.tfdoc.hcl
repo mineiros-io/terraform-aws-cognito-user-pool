@@ -580,7 +580,7 @@ section {
           description = <<-END
             The domain name that should be used. Can be set to a FQDN or prefix.
             If no FQDN and `certificate_arn` are set, the domain prefix will be used for the sign-up and sign-in pages that are hosted by Amazon Cognito,
-            e.g. `https://{YOUR_PREFIX}.auth.eu-west-1.amazoncognito.com`.
+            e.g. `https://{YOUR_PREFIX}.auth.us-west-1.amazoncognito.com`.
             The prefix must be unique across the selected AWS Region.
             Domain names can only contain lower-case letters, numbers, and hyphens.
           END
