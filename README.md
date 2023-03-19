@@ -251,6 +251,12 @@ for details and use-cases.
 
   Default is `1`.
 
+  [**`attributes_require_verification_before_update`**](#var-attributes_require_verification_before_update): *(Optional `string`)*<a name="var-attributes_require_verification_before_update"></a>
+  
+  A list of attributes requiring verification before update. If set, the provided value(s) must also be set in auto_verified_attributes. Valid values: email, phone_number. When you update the value of an email or phone number attribute, your user must verify the new value. Until they verify the new value, they can receive messages and sign in with the original value. If you don't turn on this feature, your user can't sign in with that attribute before they verify the new value.
+  
+  Default is `["email"]`.
+
 - [**`allow_software_mfa_token`**](#var-allow_software_mfa_token): *(Optional `bool`)*<a name="var-allow_software_mfa_token"></a>
 
   Boolean whether to enable software token Multi-Factor Authentication (MFA) tokens, such as Time-Based One-Time Password (TOTP). To disable software token MFA when `sms_configuration` is not present, the `mfa_configuration` argument must be set to `OFF` and the `software_token_mfa_configuration` configuration block must be fully removed.
