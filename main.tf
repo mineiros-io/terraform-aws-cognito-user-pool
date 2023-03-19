@@ -27,6 +27,10 @@ resource "aws_cognito_user_pool" "user_pool" {
 
   mfa_configuration = var.mfa_configuration
 
+  user_attribute_update_settings {
+    attributes_require_verification_before_update = var.attributes_require_verification_before_update
+  }
+  
   password_policy {
     minimum_length                   = var.password_minimum_length
     require_lowercase                = var.password_require_lowercase
