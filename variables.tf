@@ -252,6 +252,14 @@ variable "auto_verified_attributes" {
   ]
 }
 
+variable "attributes_require_verification_before_update" {
+  type        = set(string)
+  description = "(Required) A list of attributes requiring verification before update. If set, the provided value(s) must also be set in auto_verified_attributes. Valid values: email, phone_number."
+  default = [
+    "email"
+  ]
+}
+
 variable "account_recovery_mechanisms" {
   type        = any
   description = "(Optional) A list of recovery_mechanisms which are defined by a `name` and its `priority`. Valid values for `name` are veri  fied_email, verified_phone_number, and admin_only."
