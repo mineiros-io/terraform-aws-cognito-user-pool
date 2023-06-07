@@ -8,7 +8,7 @@
 # Examples for using this Mineiros module
 
 - [complete/] Deploy a Cognito User Pool with custom settings.
-- [user-pool-with-default-settings/] Deploy a Cognito User Pool with custom settings.
+- [user-pool-with-default-settings/] Deploy a Cognito User Pool with default settings.
 
 <!-- References -->
 [complete/]: https://github.com/mineiros-io/terraform-aws-cognito-user-pool/blob/master/examples/complete
