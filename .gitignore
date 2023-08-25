@@ -45,6 +45,7 @@ vendor
 
 # Terratest directory used to store temporary data
 .test-data
+.terratest
 
 # Terraform crash log files
 crash.log
