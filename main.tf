@@ -211,7 +211,7 @@ locals {
 }
 
 resource "aws_cognito_user_pool_client" "client" {
-  for_each = var.module_enabled ? local.clients : []
+  for_each = var.module_enabled ? local.clients : null
 
   name = each.key
 
